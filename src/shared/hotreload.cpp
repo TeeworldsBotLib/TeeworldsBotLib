@@ -1,0 +1,119 @@
+#include <cstdio>
+#include <cstdlib>
+
+#ifdef WIN32
+// TODO: windows api
+#else
+#include <dlfcn.h>
+#include <sys/stat.h>
+#endif
+
+#include <shared/base/system.h>
+
+#include "shared/hotreload.h"
+
+namespace TWBL {
+
+bool CHotreloader::NeedRefresh()
+{
+	time_t Created, Updated;
+	// returns 1 if the file does not exist
+	if(fs_file_time(m_aFilename, &Created, &Updated))
+		return false;
+
+	// wait for the newly created file to become ready
+	// we expect "file too short" to be caused while
+	// the file is being written
+	if(!m_pHandle && fs_is_file(m_aFilename))
+		return true;
+
+	if(Updated > m_LastReload)
+	{
+		m_LastReload = Updated;
+		return true;
+	}
+
+	return false;
+}
+
+void *CHotreloader::LoadTick(FTwbl_BotTick *ppfnBotTick)
+{
+	const char *pFilename = m_aFilename;
+	const char *pTickname = m_aTickname;
+
+	*ppfnBotTick = m_pfnBotTick;
+
+	if(!NeedRefresh())
+		return m_pHandle;
+
+#ifdef WIN32
+	return nullptr;
+#else
+	char aTickfunc[512];
+	snprintf(aTickfunc, sizeof(aTickfunc), "Twbl_%sTickHot", pTickname);
+
+	if(m_pHandle)
+	{
+		int Error = CloseHandle(m_pHandle);
+		if(Error)
+		{
+			fprintf(stderr, "dlclose error: %d\n", Error);
+		}
+	}
+	// else
+	// {
+	// 	fprintf(stderr, "[twbl] Error: ignore this error if it is only printed once.\n");
+	// 	fprintf(stderr, "[twbl] Error: twbl no privious handle found for %s\n", pFilename);
+	// 	fprintf(stderr, "[twbl] Error: make sure to not recreate the hotreload object. Use static or member variables.\n");
+	// }
+
+	dlerror();
+	m_pHandle = dlopen(pFilename, RTLD_NOW | RTLD_GLOBAL);
+	if(!m_pHandle)
+	{
+		fprintf(stderr, "dlopen error: %s\n", dlerror());
+		return NULL;
+	}
+	dlerror();
+
+	m_pfnBotTick = (FTwbl_BotTick)dlsym(m_pHandle, aTickfunc);
+
+	char *pError = dlerror();
+	if(pError != NULL)
+	{
+		fprintf(stderr, "dlsym failed on %s: %s\n", aTickfunc, pError);
+		return NULL;
+	}
+
+	*ppfnBotTick = m_pfnBotTick;
+
+	return m_pHandle;
+#endif
+}
+
+int CHotreloader::CloseHandle(void *pHandle)
+{
+#ifdef WIN32
+	return 0;
+#else
+	return dlclose(pHandle);
+#endif
+}
+
+int CHotreloader::UnloadTick()
+{
+	int Error = 0;
+	if(m_pHandle)
+		Error = CloseHandle(m_pHandle);
+	m_pHandle = nullptr;
+	m_pfnBotTick = nullptr;
+	m_LastReload = -1;
+	return Error;
+}
+
+CHotreloader::~CHotreloader()
+{
+	UnloadTick();
+}
+
+} // namespace TWBL
