@@ -1,5 +1,5 @@
-#ifndef TWBL_SRC_BOTS_SAMPLE_H
-#define TWBL_SRC_BOTS_SAMPLE_H
+#ifndef TWBL_SRC_BOTS_FOLLOW_H
+#define TWBL_SRC_BOTS_FOLLOW_H
 
 #include <bots/base.h>
 #include <shared/types.h>
