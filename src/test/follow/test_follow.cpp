@@ -5,7 +5,7 @@
 #include <test/setup.h>
 #include <test/twbl_assert.h>
 
-#include <bots/follow.h>
+#include <bots/follow/follow.h>
 
 using namespace TWBL;
 

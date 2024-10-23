@@ -6,7 +6,7 @@
 #include <shared/player.h>
 #include <shared/types.h>
 
-#include <bots/follow.h>
+#include <bots/follow/follow.h>
 
 #include <bots/def_macros.h>
 

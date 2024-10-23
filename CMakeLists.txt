@@ -28,6 +28,8 @@ FILE(GLOB BOT_SOURCE_FILES
     src/shared/base/*.h
     src/shared/*.cpp
     src/shared/*.h
+    src/bots/*/*.cpp
+    src/bots/*/*.h
     src/bots/*.cpp
     src/bots/*.h
 )

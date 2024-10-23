@@ -4,7 +4,7 @@
 #include <test/setup.h>
 #include <test/twbl_assert.h>
 
-#include <bots/sample.h>
+#include <bots/sample/sample.h>
 
 using namespace TWBL;
 
