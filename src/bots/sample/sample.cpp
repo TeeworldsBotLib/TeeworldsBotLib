@@ -2,6 +2,7 @@
 #include <cstdlib>
 
 #include <bots/base.h>
+#include <twbl/teeworlds/protocol.h>
 #include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/player.h>
 #include <twbl/types.h>
@@ -14,6 +15,8 @@ namespace TWBL {
 
 void CSampleBot::Tick()
 {
+	SetWeapon(WEAPON_HAMMER, "hammer time");
+
 	Right("yolo");
 	Left("hello");
 	Right("world");

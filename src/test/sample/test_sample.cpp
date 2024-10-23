@@ -68,7 +68,7 @@ static void TestBasic()
 	EXPECT_STREQ(Bot.m_apDirComments[2], "hello");
 	EXPECT_STREQ(Bot.m_apDirComments[3], "yolo");
 	EXPECT_STREQ(Bot.m_apDirFunctions[0], "Tick");
-	EXPECT_EQ(Bot.m_aDirLines[0], 28);
+	EXPECT_EQ(Bot.m_aDirLines[0], 31);
 
 	EXPECT_STREQ(Bot.m_apAimComments[0], "right");
 	EXPECT_EQ(Bot.m_TargetX, 100);
