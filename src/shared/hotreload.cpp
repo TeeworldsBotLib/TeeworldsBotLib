@@ -14,6 +14,18 @@
 
 namespace TWBL {
 
+CHotreloader::CHotreloader()
+{
+	m_aFilename[0] = '\0';
+	m_aTickname[0] = '\0';
+}
+
+void CHotreloader::Init(const char *pFilename, const char *pTickname)
+{
+	strncpy(m_aFilename, pFilename, sizeof(m_aFilename) - 1);
+	strncpy(m_aTickname, pTickname, sizeof(m_aTickname) - 1);
+}
+
 bool CHotreloader::NeedRefresh()
 {
 	time_t Created, Updated;
@@ -45,6 +57,8 @@ void *CHotreloader::LoadTick(FTwbl_BotTick *ppfnBotTick)
 
 	if(!NeedRefresh())
 		return m_pHandle;
+
+	UnloadTick();
 
 #ifdef WIN32
 	return nullptr;

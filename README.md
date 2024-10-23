@@ -83,12 +83,25 @@ void CCharacter::Tick()
 
 Or with hot reloading support
 
+
+```C++
+// src/game/server/entities/character.h
+class CCharacter
+{
+  // [...]
+
+  TWBL::CHotreloader m_TwblHotreloader;
+
+  // [...]
+};
+```
+
 ```C++
 // src/game/server/entities/character.cpp
 
 #include <shared/hotreload.h>
 #include <shared/types.h>
-#include <bots/sample.h>
+#include <bots/sample/sample.h>
 #include <server/set_state.h>
 
 void CCharacter::Tick()
@@ -100,7 +113,9 @@ void CCharacter::Tick()
 	State.m_pCollision = Collision();
 	State.m_ppPlayers = GameServer()->m_apPlayers;
 
-	static TWBL::CHotreloader Hotreloader("./libtwbl_bottick.so", "Follow");
+	// ideally this Init() is moved to the constructor
+	m_TwblHotreloader.Init("./libtwbl_bottick.so", "Follow");
+
 	FTwbl_BotTick BotTick;
 	void *pHandle = Hotreloader.LoadTick(&BotTick);
 
