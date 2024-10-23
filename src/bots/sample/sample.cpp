@@ -2,9 +2,9 @@
 #include <cstdlib>
 
 #include <bots/base.h>
-#include <twbl/teeworlds/protocol.h>
 #include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/player.h>
+#include <twbl/teeworlds/protocol.h>
 #include <twbl/types.h>
 
 #include <bots/sample/sample.h>
