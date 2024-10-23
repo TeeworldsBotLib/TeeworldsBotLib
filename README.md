@@ -30,6 +30,8 @@ Edit your server's CMakeLists.txt and insert those lines above `add_executable(g
     ${TWBL_ROOT}/src/shared/base/*.h
     ${TWBL_ROOT}/src/shared/*.cpp
     ${TWBL_ROOT}/src/shared/*.h
+    ${TWBL_ROOT}/src/bots/*/*.cpp
+    ${TWBL_ROOT}/src/bots/*/*.h
     ${TWBL_ROOT}/src/bots/*.cpp
     ${TWBL_ROOT}/src/bots/*.h
   )
