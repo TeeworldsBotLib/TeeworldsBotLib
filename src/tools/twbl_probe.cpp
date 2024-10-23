@@ -11,7 +11,7 @@ int main() { return 0; }
 #include <dlfcn.h>
 #include <sys/stat.h>
 
-#include "shared/types.h"
+#include <twbl/types.h>
 
 const char *GetString(void *pHandle, const char *pStrFunc)
 {

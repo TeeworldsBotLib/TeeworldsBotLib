@@ -2,7 +2,7 @@
 #define TWBL_SRC_BOTS_FOLLOW_FOLLOW_H
 
 #include <bots/base.h>
-#include <shared/types.h>
+#include <twbl/types.h>
 
 namespace TWBL {
 

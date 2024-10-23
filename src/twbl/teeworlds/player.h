@@ -1,8 +1,8 @@
 #ifndef TWBL_SRC_SHARED_PLAYER_H
 #define TWBL_SRC_SHARED_PLAYER_H
 
-#include <shared/character.h>
-#include <shared/vmath.h>
+#include <twbl/teeworlds/base/vmath.h>
+#include <twbl/teeworlds/character.h>
 
 #if __has_include(<game/server/player.h>)
 #include <game/server/player.h>

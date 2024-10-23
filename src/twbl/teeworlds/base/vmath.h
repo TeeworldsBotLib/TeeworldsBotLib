@@ -8,7 +8,7 @@
 #include <cmath>
 #include <cstdint>
 
-#include <shared/twmath.h>
+#include <twbl/teeworlds/base/math.h>
 
 // ------------------------------------
 

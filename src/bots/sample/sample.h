@@ -2,7 +2,7 @@
 #define TWBL_SRC_BOTS_SAMPLE_SAMPLE_H
 
 #include <bots/base.h>
-#include <shared/types.h>
+#include <twbl/types.h>
 
 namespace TWBL {
 

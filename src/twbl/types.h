@@ -4,9 +4,9 @@
 #include <cstdio>
 #include <cstring>
 
-#include <shared/character.h>
-#include <shared/collision.h>
-#include <shared/player.h>
+#include <twbl/teeworlds/character.h>
+#include <twbl/teeworlds/collision.h>
+#include <twbl/teeworlds/player.h>
 
 #define TWBL_MAX_LOG_LEN 16
 

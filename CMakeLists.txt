@@ -24,10 +24,10 @@ if(TWBL_DEBUG)
 endif()
 
 FILE(GLOB BOT_SOURCE_FILES
-    src/shared/base/*.cpp
-    src/shared/base/*.h
-    src/shared/*.cpp
-    src/shared/*.h
+    src/twbl/*/*.cpp
+    src/twbl/*/*.h
+    src/twbl/*.cpp
+    src/twbl/*.h
     src/bots/*/*.cpp
     src/bots/*/*.h
     src/bots/*.cpp

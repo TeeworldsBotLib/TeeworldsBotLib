@@ -9,7 +9,7 @@
 
 #include <ctime>
 
-#include <shared/base/detect.h>
+#include <twbl/teeworlds/base/detect.h>
 
 #ifdef CONF_FAMILY_UNIX
 #include <sys/stat.h>

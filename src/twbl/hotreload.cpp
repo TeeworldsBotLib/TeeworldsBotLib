@@ -8,9 +8,8 @@
 #include <sys/stat.h>
 #endif
 
-#include <shared/base/system.h>
-
-#include "shared/hotreload.h"
+#include <twbl/hotreload.h>
+#include <twbl/teeworlds/base/system.h>
 
 namespace TWBL {
 

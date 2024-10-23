@@ -26,10 +26,10 @@ Edit your server's CMakeLists.txt and insert those lines above `add_executable(g
   set(TWBL_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src/external/TeeworldsBotLib)
   include_directories(${TWBL_ROOT}/src)
   FILE(GLOB TWBL_SRC
-    ${TWBL_ROOT}/src/shared/base/*.cpp
-    ${TWBL_ROOT}/src/shared/base/*.h
-    ${TWBL_ROOT}/src/shared/*.cpp
-    ${TWBL_ROOT}/src/shared/*.h
+    ${TWBL_ROOT}/src/twbl/*/*.cpp
+    ${TWBL_ROOT}/src/twbl/*/*.h
+    ${TWBL_ROOT}/src/twbl/*.cpp
+    ${TWBL_ROOT}/src/twbl/*.h
     ${TWBL_ROOT}/src/bots/*/*.cpp
     ${TWBL_ROOT}/src/bots/*/*.h
     ${TWBL_ROOT}/src/bots/*.cpp
@@ -60,7 +60,7 @@ in `CCharacter::Tick()`
 ```C++
 // src/game/server/entities/character.cpp
 
-#include <shared/types.h>
+#include <twbl/types.h>
 #include <bots/sample.h>
 #include <server/set_state.h>
 
@@ -99,8 +99,8 @@ class CCharacter
 ```C++
 // src/game/server/entities/character.cpp
 
-#include <shared/hotreload.h>
-#include <shared/types.h>
+#include <twbl/hotreload.h>
+#include <twbl/types.h>
 #include <bots/sample/sample.h>
 #include <server/set_state.h>
 

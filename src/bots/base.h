@@ -3,10 +3,11 @@
 
 #include <cstddef>
 
-#include <shared/character.h>
-#include <shared/player.h>
-#include <shared/types.h>
-#include <shared/vmath.h>
+#include <twbl/teeworlds/base/vmath.h>
+#include <twbl/teeworlds/character.h>
+#include <twbl/teeworlds/player.h>
+
+#include <twbl/types.h>
 
 #if defined(__GNUC__) && __GNUC__ >= 4
 #define TWBL_HOT __attribute__((visibility("hidden")))

@@ -1,7 +1,7 @@
-#include "bots/base.h"
 #include <cstdio>
 
-#include <shared/types.h>
+#include <bots/base.h>
+#include <twbl/types.h>
 
 namespace TWBL {
 

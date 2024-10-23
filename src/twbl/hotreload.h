@@ -4,7 +4,7 @@
 #include <cstring>
 #include <ctime>
 
-#include "shared/types.h"
+#include <twbl/types.h>
 
 typedef void (*FTwbl_BotTick)(const CServerBotStateIn *pStateIn, CServerBotStateOut *pStateOut);
 

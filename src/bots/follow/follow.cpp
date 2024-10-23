@@ -2,9 +2,10 @@
 #include <cstdlib>
 
 #include <bots/base.h>
-#include <shared/character.h>
-#include <shared/player.h>
-#include <shared/types.h>
+
+#include <twbl/teeworlds/character.h>
+#include <twbl/teeworlds/player.h>
+#include <twbl/types.h>
 
 #include <bots/follow/follow.h>
 

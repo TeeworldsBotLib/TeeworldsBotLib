@@ -1,7 +1,7 @@
 #ifndef TWBL_SRC_SHARED_CHARACTER_H
 #define TWBL_SRC_SHARED_CHARACTER_H
 
-#include <shared/vmath.h>
+#include <twbl/teeworlds/base/vmath.h>
 
 #if __has_include(<game/server/entities/character.h>)
 #include <game/server/entities/character.h>
