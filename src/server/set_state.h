@@ -4,8 +4,8 @@
 // has to be included by the server
 // make sure character.h is included first
 
-#include "shared/character.h"
-#include <shared/types.h>
+#include <twbl/teeworlds/character.h>
+#include <twbl/types.h>
 
 namespace TWBL {
 
