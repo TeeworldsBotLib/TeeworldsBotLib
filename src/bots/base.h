@@ -3,6 +3,7 @@
 
 #include <cstddef>
 
+#include <twbl/teeworlds/base/system.h>
 #include <twbl/teeworlds/base/vmath.h>
 #include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/player.h>
@@ -41,7 +42,7 @@ public:
 		CTwblPersistentState *pState,
 		size_t SizeOfState)
 	{
-		// TODO: assert SizeOfState > MIN_STATE_SIZE
+		dbg_assert(SizeOfState >= MIN_TWBL_STATE_SIZE, "persistent state buffer is too small");
 
 		m_pStateIn = pStateIn;
 		m_pStateOut = pStateOut;

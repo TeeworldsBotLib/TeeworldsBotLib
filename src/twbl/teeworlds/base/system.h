@@ -87,6 +87,22 @@ void dbg_msg(const char *sys, const char *fmt, ...)
 void dbg_break();
 void dbg_assert_imp(const char *filename, int line, bool test, const char *msg);
 
+/* Group: Debug */
+/*
+
+	Function: dbg_assert
+		Breaks into the debugger based on a test.
+
+	Parameters:
+		test - Result of the test.
+		msg - Message that should be printed if the test fails.
+
+	See Also:
+		<dbg_break>
+*/
+void dbg_assert(int test, const char *msg);
+#define dbg_assert(test, msg) dbg_assert_imp(__FILE__, __LINE__, test, msg)
+
 /**
  * @ingroup Debug
  *
