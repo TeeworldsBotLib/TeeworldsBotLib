@@ -63,6 +63,8 @@ public:
 	bool IsGrounded() { return Character()->IsGrounded(); }
 	int FreezeTime() { return Character()->m_FreezeTime; }
 	bool IsFrozen(CCharacter *pChr = nullptr);
+	bool TicksPassed(int Ticks) { return m_pStateIn->m_GameTick % Ticks == 0; }
+	int GameTick() { return m_pStateIn->m_GameTick; }
 
 	// it is recommended to use the macros instead
 

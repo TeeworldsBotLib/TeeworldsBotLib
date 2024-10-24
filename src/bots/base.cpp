@@ -1,6 +1,7 @@
 #include <cstdio>
 
 #include <bots/base.h>
+#include <twbl/teeworlds/protocol.h>
 #include <twbl/types.h>
 
 namespace TWBL {
@@ -158,6 +159,8 @@ void CBaseBot::_Jump(int Value, const char *pComment, const char *pFunction, con
 
 void CBaseBot::_FireRaw(int Value) const
 {
+	if(Value)
+		Value = m_pStateIn->m_GameTick & INPUT_STATE_MASK;
 	m_pStateOut->m_Fire = Value;
 }
 
