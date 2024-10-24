@@ -24,6 +24,8 @@ if(TWBL_DEBUG)
 endif()
 
 FILE(GLOB BOT_SOURCE_FILES
+    src/twbl/teeworlds/base/*.cpp
+    src/twbl/teeworlds/base/*.h
     src/twbl/*/*.cpp
     src/twbl/*/*.h
     src/twbl/*.cpp
