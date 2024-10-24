@@ -67,7 +67,7 @@ public:
 	 *
 	 * Aim with targets using world coordinates
 	 */
-	void _AimPosRaw(int TargetX, int TargetY, const char *pComment, const char *pFunction, const char *pFile, int Line);
+	void _AimPosRaw(int TargetX, int TargetY);
 	void _AimPos(int TargetX, int TargetY, const char *pComment, const char *pFunction, const char *pFile, int Line);
 
 	void _SetDirectionRaw(int Dir) const;
