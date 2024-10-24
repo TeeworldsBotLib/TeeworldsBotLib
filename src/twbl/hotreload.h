@@ -5,9 +5,10 @@
 #include <cstring>
 #include <ctime>
 
+#include <twbl/state.h>
 #include <twbl/types.h>
 
-typedef void (*FTwbl_BotTick)(const CServerBotStateIn *pStateIn, CServerBotStateOut *pStateOut, void *pState, size_t SizeOfState);
+typedef void (*FTwbl_BotTick)(const CServerBotStateIn *pStateIn, CServerBotStateOut *pStateOut, CTwblPersistentState *pState, size_t SizeOfState);
 
 namespace TWBL {
 
