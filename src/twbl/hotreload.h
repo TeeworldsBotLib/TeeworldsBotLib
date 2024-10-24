@@ -1,12 +1,13 @@
 #ifndef TWBL_SRC_SHARED_HOTRELOAD_H
 #define TWBL_SRC_SHARED_HOTRELOAD_H
 
+#include <cstddef>
 #include <cstring>
 #include <ctime>
 
 #include <twbl/types.h>
 
-typedef void (*FTwbl_BotTick)(const CServerBotStateIn *pStateIn, CServerBotStateOut *pStateOut);
+typedef void (*FTwbl_BotTick)(const CServerBotStateIn *pStateIn, CServerBotStateOut *pStateOut, void *pState, size_t SizeOfState);
 
 namespace TWBL {
 

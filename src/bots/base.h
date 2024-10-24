@@ -7,6 +7,7 @@
 #include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/player.h>
 
+#include <twbl/state.h>
 #include <twbl/types.h>
 
 #if defined(__GNUC__) && __GNUC__ >= 4
@@ -32,11 +33,22 @@ class CBaseBot
 public:
 	const CServerBotStateIn *m_pStateIn;
 	CServerBotStateOut *m_pStateOut;
+	CTwblPersistentState *m_pState;
 
-	CBaseBot(const CServerBotStateIn *pStateIn, CServerBotStateOut *pStateOut)
+	CBaseBot(
+		const CServerBotStateIn *pStateIn,
+		CServerBotStateOut *pStateOut,
+		CTwblPersistentState *pState,
+		size_t SizeOfState)
 	{
+		// TODO: assert SizeOfState > MIN_STATE_SIZE
+
 		m_pStateIn = pStateIn;
 		m_pStateOut = pStateOut;
+		m_pState = pState;
+
+		// the constructor should be called every tick
+		m_pState->m_TwblTicks++;
 	}
 
 	const CCollision *Collision() const { return m_pStateIn->m_pCollision; }

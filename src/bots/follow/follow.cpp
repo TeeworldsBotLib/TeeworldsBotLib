@@ -1,8 +1,10 @@
+#include <cstddef>
 #include <cstdio>
 #include <cstdlib>
 
 #include <bots/base.h>
 
+#include <twbl/state.h>
 #include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/player.h>
 #include <twbl/types.h>
@@ -40,16 +42,16 @@ void CFollowBot::Tick()
 extern "C" {
 
 #ifdef TWBL_SHARED_OBJECT
-void Twbl_FollowTickHot(const CServerBotStateIn *pStateIn, CServerBotStateOut *pStateOut)
+void Twbl_FollowTickHot(const CServerBotStateIn *pStateIn, CServerBotStateOut *pStateOut, CTwblPersistentState *pState, size_t SizeOfState)
 {
-	TWBL::CFollowBot Bot(pStateIn, pStateOut);
+	TWBL::CFollowBot Bot(pStateIn, pStateOut, pState, SizeOfState);
 	Bot.Tick();
 }
 #endif
 
-void Twbl_FollowTick(const CServerBotStateIn *pStateIn, CServerBotStateOut *pStateOut)
+void Twbl_FollowTick(const CServerBotStateIn *pStateIn, CServerBotStateOut *pStateOut, CTwblPersistentState *pState, size_t SizeOfState)
 {
-	TWBL::CFollowBot Bot(pStateIn, pStateOut);
+	TWBL::CFollowBot Bot(pStateIn, pStateOut, pState, SizeOfState);
 	Bot.Tick();
 }
 }

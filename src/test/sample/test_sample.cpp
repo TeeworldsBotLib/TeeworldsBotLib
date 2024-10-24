@@ -1,5 +1,6 @@
 #include <test/setup.h>
 #include <test/twbl_assert.h>
+#include <twbl/state.h>
 #include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/player.h>
 #include <twbl/types.h>
@@ -49,6 +50,8 @@ static void TestBasic()
 {
 	InitTest("basic");
 
+	CTwblPersistentState PersistentState;
+
 	CCharacter BotChar;
 	CPlayer BotPlayer;
 	BotPlayer.m_pCharacter = &BotChar;
@@ -59,7 +62,7 @@ static void TestBasic()
 	State.m_ppPlayers = apPlayers;
 	State.m_pCharacter = &BotChar;
 	CServerBotStateOut Bot;
-	Twbl_SampleTick(&State, &Bot);
+	Twbl_SampleTick(&State, &Bot, &PersistentState, sizeof(PersistentState));
 
 	EXPECT_EQ(Bot.m_Direction, 1);
 
@@ -68,7 +71,7 @@ static void TestBasic()
 	EXPECT_STREQ(Bot.m_apDirComments[2], "hello");
 	EXPECT_STREQ(Bot.m_apDirComments[3], "yolo");
 	EXPECT_STREQ(Bot.m_apDirFunctions[0], "Tick");
-	EXPECT_EQ(Bot.m_aDirLines[0], 31);
+	EXPECT_EQ(Bot.m_aDirLines[0], 33);
 
 	EXPECT_STREQ(Bot.m_apAimComments[0], "right");
 	EXPECT_EQ(Bot.m_TargetX, 100);
@@ -78,7 +81,7 @@ static void TestBasic()
 	EXPECT_EQ(Bot.m_Hook, 1);
 
 	BotChar.m_Pos.x = 20 * 32;
-	Twbl_SampleTick(&State, &Bot);
+	Twbl_SampleTick(&State, &Bot, &PersistentState, sizeof(PersistentState));
 	EXPECT_STREQ(Bot.m_apDirComments[0], "go left till 10");
 }
 
