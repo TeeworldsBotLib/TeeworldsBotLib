@@ -20,6 +20,7 @@ class CServerBotStateIn
 {
 public:
 	int m_ClientId;
+	int m_GameTick = 0;
 	const CCollision *m_pCollision = nullptr;
 	CCharacter *m_pCharacter = nullptr;
 	CPlayer **m_ppPlayers = nullptr;

@@ -43,6 +43,7 @@ public:
 		size_t SizeOfState)
 	{
 		dbg_assert(SizeOfState >= MIN_TWBL_STATE_SIZE, "persistent state buffer is too small");
+		dbg_assert(pStateIn->m_GameTick > 0, "game tick is too low. did you forget to set it?");
 
 		m_pStateIn = pStateIn;
 		m_pStateOut = pStateOut;

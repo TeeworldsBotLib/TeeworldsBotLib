@@ -32,6 +32,7 @@ static void TestBasic()
 	apPlayers[1] = &BotPlayer;
 
 	CServerBotStateIn State;
+	State.m_GameTick = 1;
 	State.m_ppPlayers = apPlayers;
 	State.m_pCharacter = &BotChar;
 
