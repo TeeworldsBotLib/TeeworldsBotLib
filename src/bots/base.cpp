@@ -104,6 +104,11 @@ void CBaseBot::_Aim(int TargetX, int TargetY, const char *pComment, const char *
 	PushRingInt(m_pStateOut->m_aAimLines, Line, GetIntBufSize(m_pStateOut->m_aAimLines));
 }
 
+void CBaseBot::_AimPos(int TargetX, int TargetY, const char *pComment, const char *pFunction, const char *pFile, int Line)
+{
+	_Aim(TargetX - GetPos().x, TargetY - GetPos().y, pComment, pFunction, pFile, Line);
+}
+
 void CBaseBot::_SetDirectionRaw(int Dir) const
 {
 	m_pStateOut->m_Direction = Dir;

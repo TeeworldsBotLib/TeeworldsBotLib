@@ -55,8 +55,20 @@ public:
 	void _DieRaw() const;
 	void _Die(const char *pComment) const;
 
+	/* Aim(x, y)
+	 *
+	 * Aim with targets using coordinates
+	 * relative to the the tee
+	 */
 	void _AimRaw(int TargetX, int TargetY) const;
 	void _Aim(int TargetX, int TargetY, const char *pComment, const char *pFunction, const char *pFile, int Line) const;
+
+	/* AimPos(x, y)
+	 *
+	 * Aim with targets using world coordinates
+	 */
+	void _AimPosRaw(int TargetX, int TargetY, const char *pComment, const char *pFunction, const char *pFile, int Line);
+	void _AimPos(int TargetX, int TargetY, const char *pComment, const char *pFunction, const char *pFile, int Line);
 
 	void _SetDirectionRaw(int Dir) const;
 	void _SetDirection(int Dir, const char *pComment, const char *pFunction, const char *pFile, int Line) const;

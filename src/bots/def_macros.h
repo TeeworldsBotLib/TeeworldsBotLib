@@ -3,6 +3,7 @@
 #ifdef TWBL_DEBUG
 #define Die(comment) _Die(comment)
 #define Aim(TargetX, TargetY, comment) _Aim(TargetX, TargetY, comment, __func__, __FILE__, __LINE__)
+#define AimPos(TargetX, TargetY, comment) _AimPos(TargetX, TargetY, comment, __func__, __FILE__, __LINE__)
 #define SetDirection(value, comment) _SetDirection(value, comment, __func__, __FILE__, __LINE__)
 #define Hook(value, comment) _Hook(value, comment, __func__, __FILE__, __LINE__)
 #define Jump(value, comment) _Jump(value, comment, __func__, __FILE__, __LINE__)
@@ -11,6 +12,7 @@
 #else
 #define Die(comment) _DieRaw()
 #define Aim(TargetX, TargetY, comment) _AimRaw(TargetX, TargetY)
+#define AimPos(TargetX, TargetY, comment) _AimPosRaw(TargetX, TargetY)
 #define SetDirection(value, comment) _SetDirectionRaw(value)
 #define Hook(value, comment) _HookRaw(value)
 #define Jump(value, comment) _JumpRaw(value)
