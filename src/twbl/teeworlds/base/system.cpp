@@ -4,6 +4,7 @@
 //       so standalone tests can use things like dbg_msg()
 #else
 
+#include <cstdarg>
 #include <cstdio>
 #include <cstring>
 
@@ -14,6 +15,51 @@ int str_length(const char *str)
 	return (int)strlen(str);
 }
 
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat-nonliteral"
+#endif
+void str_timestamp_ex(time_t time_data, char *buffer, int buffer_size, const char *format)
+{
+	struct tm *time_info;
+	dbg_assert(buffer_size > 0, "buffer_size invalid");
+	time_info = localtime(&time_data);
+	strftime(buffer, buffer_size, format, time_info);
+	buffer[buffer_size - 1] = 0; /* assure null termination */
+}
+
+void str_timestamp_format(char *buffer, int buffer_size, const char *format)
+{
+	time_t time_data;
+	time(&time_data);
+	str_timestamp_ex(time_data, buffer, buffer_size, format);
+}
+
+void str_timestamp(char *buffer, int buffer_size)
+{
+	str_timestamp_format(buffer, buffer_size, FORMAT_NOSPACE);
+}
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
+void str_format(char *buffer, int buffer_size, const char *format, ...)
+{
+	va_list ap;
+	dbg_assert(buffer_size > 0, "buffer_size invalid");
+	va_start(ap, format);
+
+#if defined(CONF_FAMILY_WINDOWS) && !defined(__GNUC__)
+	_vsprintf_p(buffer, buffer_size, format, ap);
+#else
+	vsnprintf(buffer, buffer_size, format, ap);
+#endif
+
+	va_end(ap);
+
+	buffer[buffer_size - 1] = 0; /* assure null termination */
+}
+
 void dbg_break()
 {
 #ifdef __GNUC__
@@ -21,6 +67,32 @@ void dbg_break()
 #else
 	abort();
 #endif
+}
+
+void dbg_msg(const char *sys, const char *fmt, ...)
+{
+	va_list args;
+	char str[1024 * 4];
+	char *msg;
+	int i, len;
+
+	char timestr[80];
+	str_timestamp_format(timestr, sizeof(timestr), FORMAT_SPACE);
+
+	str_format(str, sizeof(str), "[%s][%s]: ", timestr, sys);
+
+	len = str_length(str);
+	msg = (char *)str + len;
+
+	va_start(args, fmt);
+#if defined(CONF_FAMILY_WINDOWS) && !defined(__GNUC__)
+	_vsprintf_p(msg, sizeof(str) - len, fmt, args);
+#else
+	vsnprintf(msg, sizeof(str) - len, fmt, args);
+#endif
+	va_end(args);
+
+	puts(str);
 }
 
 void dbg_assert_imp(const char *filename, int line, bool test, const char *msg)
