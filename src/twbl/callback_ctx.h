@@ -3,7 +3,8 @@
 
 namespace TWBL {
 
-class CCallbackCtx {
+class CCallbackCtx
+{
 public:
 	virtual ~CCallbackCtx() = default;
 	virtual void SendChat(int ClientId, int Team, const char *pText) = 0;

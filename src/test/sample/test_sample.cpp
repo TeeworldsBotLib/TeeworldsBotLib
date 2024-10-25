@@ -1,13 +1,13 @@
 #include <cstdio>
 
+#include <test/mock_callback_ctx.h>
 #include <test/setup.h>
 #include <test/twbl_assert.h>
+#include <twbl/callback_ctx.h>
 #include <twbl/state.h>
 #include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/player.h>
 #include <twbl/types.h>
-#include <twbl/callback_ctx.h>
-#include <test/mock_callback_ctx.h>
 
 #include <bots/sample/sample.h>
 

@@ -1,5 +1,5 @@
-#include <twbl/teeworlds/base/system.h>
 #include <twbl/callback_ctx.h>
+#include <twbl/teeworlds/base/system.h>
 
 #include "mock_callback_ctx.h"
 
@@ -12,4 +12,3 @@ void CMockCallbackCtx::Die(int ClientId)
 {
 	dbg_msg("game", "killed cid=%d", ClientId);
 }
-

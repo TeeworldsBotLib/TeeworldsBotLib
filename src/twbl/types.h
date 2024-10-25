@@ -4,8 +4,8 @@
 #include <cstdio>
 #include <cstring>
 
-#include <twbl/teeworlds/character.h>
 #include <twbl/callback_ctx.h>
+#include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/collision.h>
 #include <twbl/teeworlds/player.h>
 
