@@ -12,7 +12,7 @@
 #define SetWeapon(value, comment) _SetWeapon(value, comment, __func__, __FILE__, __LINE__)
 #else
 #define Die(comment) _DieRaw()
-#define Emote(value, comment) _EmoteRaw()
+#define Emote(value, comment) _EmoteRaw(value)
 #define Aim(TargetX, TargetY, comment) _AimRaw(TargetX, TargetY)
 #define AimPos(TargetX, TargetY, comment) _AimPosRaw(TargetX, TargetY)
 #define SetDirection(value, comment) _SetDirectionRaw(value)
