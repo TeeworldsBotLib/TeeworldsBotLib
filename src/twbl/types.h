@@ -5,6 +5,7 @@
 #include <cstring>
 
 #include <twbl/teeworlds/character.h>
+#include <twbl/callback_ctx.h>
 #include <twbl/teeworlds/collision.h>
 #include <twbl/teeworlds/player.h>
 
@@ -25,7 +26,11 @@ public:
 	CCharacter *m_pCharacter = nullptr;
 	CPlayer **m_ppPlayers = nullptr;
 
+	// deprecated die callback
+	// replaced by callback context
 	FCallbackDie m_pfnCallbackDie = nullptr;
+
+	TWBL::CCallbackCtx *m_pCallbackCtx = nullptr;
 };
 
 class CServerBotStateOut

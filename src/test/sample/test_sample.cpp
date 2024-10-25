@@ -1,9 +1,13 @@
+#include <cstdio>
+
 #include <test/setup.h>
 #include <test/twbl_assert.h>
 #include <twbl/state.h>
 #include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/player.h>
 #include <twbl/types.h>
+#include <twbl/callback_ctx.h>
+#include <test/mock_callback_ctx.h>
 
 #include <bots/sample/sample.h>
 
@@ -62,6 +66,8 @@ static void TestBasic()
 	State.m_GameTick = 1;
 	State.m_ppPlayers = apPlayers;
 	State.m_pCharacter = &BotChar;
+	CMockCallbackCtx MockCallbackCtx;
+	State.m_pCallbackCtx = &MockCallbackCtx;
 	CServerBotStateOut Bot;
 	Twbl_SampleTick(&State, &Bot, &PersistentState, sizeof(PersistentState));
 
@@ -72,7 +78,7 @@ static void TestBasic()
 	EXPECT_STREQ(Bot.m_apDirComments[2], "hello");
 	EXPECT_STREQ(Bot.m_apDirComments[3], "yolo");
 	EXPECT_STREQ(Bot.m_apDirFunctions[0], "Tick");
-	EXPECT_EQ(Bot.m_aDirLines[0], 33);
+	EXPECT_EQ(Bot.m_aDirLines[0], 34);
 
 	EXPECT_STREQ(Bot.m_apAimComments[0], "right");
 	EXPECT_EQ(Bot.m_TargetX, 100);

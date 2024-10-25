@@ -22,3 +22,4 @@
 
 #define Left(comment) SetDirection(-1, comment)
 #define Right(comment) SetDirection(1, comment)
+

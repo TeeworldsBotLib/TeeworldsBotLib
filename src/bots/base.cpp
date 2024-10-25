@@ -81,13 +81,18 @@ void PushRingInt(int *pBuffer, int New, size_t MaxEntries)
 
 void CBaseBot::_DieRaw() const
 {
-	m_pStateIn->m_pfnCallbackDie(m_pStateIn->m_pCharacter);
+	m_pStateIn->m_pCallbackCtx->Die(m_pStateIn->m_ClientId);
 }
 
 void CBaseBot::_Die(const char *pComment) const
 {
 	_DieRaw();
 	m_pStateOut->m_pDieComment = pComment;
+}
+
+void CBaseBot::_SendChatRaw(int Team, const char *pText)
+{
+	m_pStateIn->m_pCallbackCtx->SendChat(m_pStateIn->m_ClientId, Team, pText);
 }
 
 void CBaseBot::_AimRaw(int TargetX, int TargetY) const

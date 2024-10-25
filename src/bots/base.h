@@ -66,6 +66,12 @@ public:
 	bool TicksPassed(int Ticks) { return m_pStateIn->m_GameTick % Ticks == 0; }
 	int GameTick() { return m_pStateIn->m_GameTick; }
 
+	// there is only raw chat and no macro
+	// because tracking chat is rarely needed
+	// it traces it self
+	void _SendChatRaw(int Team, const char *pText);
+	void SendChat(int Team, const char *pText) { _SendChatRaw(Team, pText); }
+
 	// it is recommended to use the macros instead
 
 	void _DieRaw() const;
