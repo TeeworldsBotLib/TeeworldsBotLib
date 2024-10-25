@@ -11,15 +11,12 @@
 
 namespace TWBL {
 
-void SetState(CCharacter *pChr, CServerBotStateIn *pState)
+void SetState(CCharacter *pChr, CServerBotStateIn *pState, *pCallbackCtx)
 {
-	CDDNetCallbackCtx CallbackCtx;
-	CallbackCtx.m_pGameServer = pChr->GameServer();
-
 	pState->m_GameTick = pChr->GameServer()->Server()->Tick();
 	pState->m_pCharacter = pChr;
 	pState->m_ClientId = pChr->GetPlayer()->GetCid();
-	pState->m_pCallbackCtx = &CallbackCtx;
+	pState->m_pCallbackCtx = pCallbackCtx;
 }
 
 } // namespace TWBL

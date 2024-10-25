@@ -56,6 +56,19 @@ Edit your server's CMakeLists.txt and insert those lines above `add_executable(g
   # add_executable(game-server ..
 ```
 
+Then add a callback context to the gameserver.
+```C++
+// src/game/server/gamecontext.h
+
+#include <server/ddnet_callback_ctx.h>
+
+class CGameContext
+{
+	// [..]
+	TWBL::CDDNetCallbackCtx m_TwblCallbackCtx;
+};
+```
+
 Then add a state buffer to the player class.
 ```C++
 // src/game/server/player.h
@@ -87,6 +100,7 @@ void CCharacter::Tick()
 	TWBL::SetState(this, &State);
 	State.m_pCollision = Collision();
 	State.m_ppPlayers = GameServer()->m_apPlayers;
+	State.m_pCallbackCtx = &GameServer()->m_TwblCallbackCtx;
 
 	Twbl_SampleTick(&State, &Bot, &GetPlayer()->m_TwblPersistentState, sizeof(GetPlayer()->m_TwblPersistentState));
 
