@@ -1,6 +1,7 @@
 #ifndef TWBL_SRC_SHARED_CHARACTER_H
 #define TWBL_SRC_SHARED_CHARACTER_H
 
+#include <twbl/teeworlds/base/system.h>
 #include <twbl/teeworlds/base/vmath.h>
 
 #if __has_include(<game/server/entities/character.h>)
@@ -23,6 +24,13 @@ public:
 
 	int m_FreezeTime = 0;
 	CCharacterCore m_Core;
+
+	int m_ClientId = -1;
+	int GetCid()
+	{
+		dbg_assert(m_ClientId != -1, "client id is not set");
+		return m_ClientId;
+	}
 
 	vec2 GetPos() const { return m_Pos; }
 	bool IsGrounded() const { return m_IsGrounded; }
