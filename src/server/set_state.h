@@ -11,7 +11,7 @@
 
 namespace TWBL {
 
-void SetState(CCharacter *pChr, CServerBotStateIn *pState, *pCallbackCtx)
+void SetState(CCharacter *pChr, CServerBotStateIn *pState, CCallbackCtx *pCallbackCtx)
 {
 	pState->m_GameTick = pChr->GameServer()->Server()->Tick();
 	pState->m_pCharacter = pChr;
