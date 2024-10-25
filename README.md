@@ -141,6 +141,7 @@ void CCharacter::Tick()
 	TWBL::SetState(this, &State);
 	State.m_pCollision = Collision();
 	State.m_ppPlayers = GameServer()->m_apPlayers;
+	State.m_pCallbackCtx = &GameServer()->m_TwblCallbackCtx;
 
 	// ideally this Init() is moved to the constructor
 	m_TwblHotreloader.Init("./libtwbl_bottick.so", "Follow");
