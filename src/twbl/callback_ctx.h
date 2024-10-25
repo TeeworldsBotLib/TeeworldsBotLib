@@ -7,8 +7,12 @@ class CCallbackCtx
 {
 public:
 	virtual ~CCallbackCtx() = default;
-	virtual void SendChat(int ClientId, int Team, const char *pText) = 0;
-	virtual void Die(int ClientId) = 0;
+	virtual void SendChat(int Team, const char *pText) = 0;
+	virtual void Die() = 0;
+	virtual void Emote(int Emote) = 0;
+
+	int m_ClientId = 0;
+	int GetCid() { return m_ClientId; }
 };
 
 }; // namespace TWBL

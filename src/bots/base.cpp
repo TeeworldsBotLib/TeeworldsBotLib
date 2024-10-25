@@ -81,7 +81,7 @@ void PushRingInt(int *pBuffer, int New, size_t MaxEntries)
 
 void CBaseBot::_DieRaw() const
 {
-	m_pStateIn->m_pCallbackCtx->Die(m_pStateIn->m_ClientId);
+	m_pStateIn->m_pCallbackCtx->Die();
 }
 
 void CBaseBot::_Die(const char *pComment) const
@@ -92,7 +92,21 @@ void CBaseBot::_Die(const char *pComment) const
 
 void CBaseBot::_SendChatRaw(int Team, const char *pText)
 {
-	m_pStateIn->m_pCallbackCtx->SendChat(m_pStateIn->m_ClientId, Team, pText);
+	m_pStateIn->m_pCallbackCtx->SendChat(Team, pText);
+}
+
+void CBaseBot::_EmoteRaw(int Emote)
+{
+	m_pStateIn->m_pCallbackCtx->Emote(Emote);
+}
+
+void CBaseBot::_Emote(int Emote, const char *pComment, const char *pFunction, const char *pFile, int Line)
+{
+	_EmoteRaw(Emote);
+	PushRingStr(m_pStateOut->m_apEmoteComments, pComment, GetStrBufSize(m_pStateOut->m_apEmoteComments));
+	PushRingStr(m_pStateOut->m_apEmoteFunctions, pFunction, GetStrBufSize(m_pStateOut->m_apEmoteFunctions));
+	PushRingStr(m_pStateOut->m_apEmoteFiles, pFile, GetStrBufSize(m_pStateOut->m_apEmoteFiles));
+	PushRingInt(m_pStateOut->m_aEmoteLines, Line, GetIntBufSize(m_pStateOut->m_aEmoteLines));
 }
 
 void CBaseBot::_AimRaw(int TargetX, int TargetY) const

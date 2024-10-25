@@ -78,6 +78,11 @@ public:
 	const char *m_apSetWeaponFiles[TWBL_MAX_LOG_LEN];
 	int m_aSetWeaponLines[TWBL_MAX_LOG_LEN];
 
+	const char *m_apEmoteComments[TWBL_MAX_LOG_LEN];
+	const char *m_apEmoteFunctions[TWBL_MAX_LOG_LEN];
+	const char *m_apEmoteFiles[TWBL_MAX_LOG_LEN];
+	int m_aEmoteLines[TWBL_MAX_LOG_LEN];
+
 	CServerBotStateOut()
 	{
 #ifdef TWBL_DEBUG
@@ -113,6 +118,11 @@ public:
 			m_apSetWeaponFunctions[i] = "";
 			m_apSetWeaponFiles[i] = "";
 			m_aSetWeaponLines[i] = 0;
+
+			m_apEmoteComments[i] = "";
+			m_apEmoteFunctions[i] = "";
+			m_apEmoteFiles[i] = "";
+			m_aEmoteLines[i] = 0;
 		}
 #endif
 	}

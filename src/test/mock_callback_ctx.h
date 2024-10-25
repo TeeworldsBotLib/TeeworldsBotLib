@@ -7,8 +7,9 @@
 class CMockCallbackCtx : public TWBL::CCallbackCtx
 {
 public:
-	void SendChat(int ClientId, int Team, const char *pText) override;
-	void Die(int ClientId) override;
+	void SendChat(int Team, const char *pText) override;
+	void Die() override;
+	void Emote(int Emote) override;
 };
 
 #endif

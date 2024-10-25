@@ -13,8 +13,9 @@ public:
 	CGameContext *m_pGameServer = nullptr;
 	CGameContext *GameServer();
 
-	void SendChat(int ClientId, int Team, const char *pText) override;
-	void Die(int ClientId) override;
+	void SendChat(int Team, const char *pText) override;
+	void Die() override;
+	void Emote(int Emote) override;
 };
 
 } // namespace TWBL

@@ -9,13 +9,15 @@ CGameContext *CDDNetCallbackCtx::GameServer()
 	return m_pGameServer;
 }
 
-void CDDNetCallbackCtx::SendChat(int ClientId, int Team, const char *pText)
+void CDDNetCallbackCtx::SendChat(int Team, const char *pText)
 {
+	int ClientId = GetCid();
 	GameServer()->SendChat(ClientId, Team, pText);
 }
 
-void CDDNetCallbackCtx::Die(int ClientId)
+void CDDNetCallbackCtx::Die()
 {
+	int ClientId = GetCid();
 	if(ClientId < 0 || ClientId >= MAX_CLIENTS)
 		return;
 
@@ -24,6 +26,10 @@ void CDDNetCallbackCtx::Die(int ClientId)
 		return;
 
 	pPlayer->KillCharacter(WEAPON_SELF);
+}
+
+void CDDNetCallbackCtx::Emote(int Emote)
+{
 }
 
 } // namespace TWBL

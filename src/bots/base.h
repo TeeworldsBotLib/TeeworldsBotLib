@@ -77,6 +77,9 @@ public:
 	void _DieRaw() const;
 	void _Die(const char *pComment) const;
 
+	void _EmoteRaw(int Emote);
+	void _Emote(int Emote, const char *pComment, const char *pFunction, const char *pFile, int Line);
+
 	/* Aim(x, y)
 	 *
 	 * Aim with targets using coordinates

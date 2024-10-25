@@ -3,12 +3,16 @@
 
 #include "mock_callback_ctx.h"
 
-void CMockCallbackCtx::SendChat(int ClientId, int Team, const char *pText)
+void CMockCallbackCtx::SendChat(int Team, const char *pText)
 {
-	dbg_msg("chat", "%d:%d: %s", ClientId, Team, pText);
+	dbg_msg("chat", "%d:%d: %s", GetCid(), Team, pText);
 }
 
-void CMockCallbackCtx::Die(int ClientId)
+void CMockCallbackCtx::Die()
 {
-	dbg_msg("game", "killed cid=%d", ClientId);
+	dbg_msg("game", "killed cid=%d", GetCid());
+}
+
+void CMockCallbackCtx::Emote(int Emote)
+{
 }
