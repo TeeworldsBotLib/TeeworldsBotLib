@@ -28,7 +28,7 @@ void CDDNetCallbackCtx::Die()
 	pPlayer->KillCharacter(WEAPON_SELF);
 }
 
-void CDDNetCallbackCtx::Emote(int Emote)
+void CDDNetCallbackCtx::Emote(int Emoticon)
 {
 }
 

@@ -9,7 +9,7 @@ public:
 	virtual ~CCallbackCtx() = default;
 	virtual void SendChat(int Team, const char *pText) = 0;
 	virtual void Die() = 0;
-	virtual void Emote(int Emote) = 0;
+	virtual void Emote(int Emoticon) = 0;
 
 	int m_ClientId = 0;
 	int GetCid() { return m_ClientId; }

@@ -13,6 +13,6 @@ void CMockCallbackCtx::Die()
 	dbg_msg("game", "killed cid=%d", GetCid());
 }
 
-void CMockCallbackCtx::Emote(int Emote)
+void CMockCallbackCtx::Emote(int Emoticon)
 {
 }

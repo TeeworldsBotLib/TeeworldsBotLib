@@ -95,14 +95,14 @@ void CBaseBot::_SendChatRaw(int Team, const char *pText)
 	m_pStateIn->m_pCallbackCtx->SendChat(Team, pText);
 }
 
-void CBaseBot::_EmoteRaw(int Emote)
+void CBaseBot::_EmoteRaw(int Emoticon)
 {
-	m_pStateIn->m_pCallbackCtx->Emote(Emote);
+	m_pStateIn->m_pCallbackCtx->Emote(Emoticon);
 }
 
-void CBaseBot::_Emote(int Emote, const char *pComment, const char *pFunction, const char *pFile, int Line)
+void CBaseBot::_Emote(int Emoticon, const char *pComment, const char *pFunction, const char *pFile, int Line)
 {
-	_EmoteRaw(Emote);
+	_EmoteRaw(Emoticon);
 	PushRingStr(m_pStateOut->m_apEmoteComments, pComment, GetStrBufSize(m_pStateOut->m_apEmoteComments));
 	PushRingStr(m_pStateOut->m_apEmoteFunctions, pFunction, GetStrBufSize(m_pStateOut->m_apEmoteFunctions));
 	PushRingStr(m_pStateOut->m_apEmoteFiles, pFile, GetStrBufSize(m_pStateOut->m_apEmoteFiles));
