@@ -36,6 +36,8 @@ Edit your server's CMakeLists.txt and insert those lines above `add_executable(g
     ${TWBL_ROOT}/src/bots/*/*.h
     ${TWBL_ROOT}/src/bots/*.cpp
     ${TWBL_ROOT}/src/bots/*.h
+    ${TWBL_ROOT}/src/server/*.cpp
+    ${TWBL_ROOT}/src/server/*.h
   )
 
   set(SERVER_SRC ${SERVER_SRC} ${TWBL_SRC})
