@@ -19,7 +19,7 @@ void SetState(CCharacter *pChr, CServerBotStateIn *pState)
 	pState->m_GameTick = pChr->GameServer()->Server()->Tick();
 	pState->m_pCharacter = pChr;
 	pState->m_ClientId = pChr->GetPlayer()->GetCid();
-	pState->m_pCallbackCtx = pCallbackCtx;
+	pState->m_pCallbackCtx = &CallbackCtx;
 }
 
 } // namespace TWBL
