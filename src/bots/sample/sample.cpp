@@ -57,6 +57,8 @@ extern "C" {
 #ifdef TWBL_SHARED_OBJECT
 void Twbl_SampleTickHot(const CServerBotStateIn *pStateIn, CServerBotStateOut *pStateOut, CTwblPersistentState *pState, size_t SizeOfState)
 {
+	dbg_assert(SizeOfState == MIN_TWBL_STATE_SIZE, "persistent state buffer does not match size");
+
 	TWBL::CSampleBot Bot(pStateIn, pStateOut, pState, SizeOfState);
 	Bot.Tick();
 }
