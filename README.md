@@ -26,6 +26,8 @@ Edit your server's CMakeLists.txt and insert those lines above `add_executable(g
   set(TWBL_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src/external/TeeworldsBotLib)
   include_directories(${TWBL_ROOT}/src)
   FILE(GLOB TWBL_SRC
+    ${TWBL_ROOT}/src/twbl/teeworlds/base/*.cpp
+    ${TWBL_ROOT}/src/twbl/teeworlds/base/*.h
     ${TWBL_ROOT}/src/twbl/*/*.cpp
     ${TWBL_ROOT}/src/twbl/*/*.h
     ${TWBL_ROOT}/src/twbl/*.cpp
@@ -54,6 +56,19 @@ Edit your server's CMakeLists.txt and insert those lines above `add_executable(g
   # add_executable(game-server ..
 ```
 
+Then add a state buffer to the player class.
+```C++
+// src/game/server/player.h
+
+#include <twbl/state.h>
+
+class CPlayer
+{
+	// [..]
+	CTwblPersistentState m_TwblPersistentState;
+}
+```
+
 Then go to `src/game/server/entities/character.cpp` and insert the following code
 in `CCharacter::Tick()`
 
@@ -61,7 +76,7 @@ in `CCharacter::Tick()`
 // src/game/server/entities/character.cpp
 
 #include <twbl/types.h>
-#include <bots/sample.h>
+#include <bots/sample/sample.h>
 #include <server/set_state.h>
 
 void CCharacter::Tick()
@@ -73,7 +88,7 @@ void CCharacter::Tick()
 	State.m_pCollision = Collision();
 	State.m_ppPlayers = GameServer()->m_apPlayers;
 
-	Twbl_SampleTick(&State, &Bot);
+	Twbl_SampleTick(&State, &Bot, &GetPlayer()->m_TwblPersistentState, sizeof(GetPlayer()->m_TwblPersistentState));
 
 	TWBL_SET_INPUT(m_SavedInput, Bot);
 
@@ -120,9 +135,9 @@ void CCharacter::Tick()
 	void *pHandle = Hotreloader.LoadTick(&BotTick);
 
 	if(pHandle)
-		BotTick(&State, &Bot);
+		BotTick(&State, &Bot, &GetPlayer()->m_TwblPersistentState, sizeof(GetPlayer()->m_TwblPersistentState));
 	else
-		Twbl_SampleTick(&State, &Bot);
+		Twbl_SampleTick(&State, &Bot, &GetPlayer()->m_TwblPersistentState, sizeof(GetPlayer()->m_TwblPersistentState));
 
 
 	TWBL_SET_INPUT(m_SavedInput, Bot);
@@ -134,14 +149,14 @@ void CCharacter::Tick()
 ## the idea
 
 Have a well defined api for server side teeworlds bots:
-- It should be easy to setup (less than 10 lines of code in mostly one place).
+- ~~It should be easy to setup (less than 10 lines of code in mostly one place).~~ **UPDATE:** this goal had to be sacraficed for hot reload and state support
 - It should be highly portable and work in basically any teeworlds or ddnet code base.
 - It should be highly debuggable via logging.
 - It should be highly debuggable via visual feedback (api for drawing text and lines at coordinates)
 - It should be stable. As in versioned and old bots should still work in 10 years.
 - It should be blazingly fast in production.
 - It should be coverable by 100% unit tests.
-- It should not depend on state.
+- ~~It should not depend on state.~~ **UPDATE:** the state is portable and reproducible
 - It should be hot reloadable.
 
 The whole thing would be pure, without side effects. There is no networking. There is no IO.

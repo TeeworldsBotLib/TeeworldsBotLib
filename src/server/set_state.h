@@ -4,21 +4,22 @@
 // has to be included by the server
 // make sure character.h is included first
 
+#include <server/ddnet_callback_ctx.h>
+#include <twbl/callback_ctx.h>
 #include <twbl/teeworlds/character.h>
 #include <twbl/types.h>
 
 namespace TWBL {
 
-void CallbackDie(CCharacter *pChr)
-{
-	pChr->Die(pChr->GetPlayer()->GetCid(), WEAPON_SELF);
-}
-
 void SetState(CCharacter *pChr, CServerBotStateIn *pState)
 {
+	CDDNetCallbackCtx CallbackCtx;
+	CallbackCtx.m_pGameServer = pChr->GameServer();
+
+	pState->m_GameTick = pChr->GameServer()->Server()->Tick();
 	pState->m_pCharacter = pChr;
 	pState->m_ClientId = pChr->GetPlayer()->GetCid();
-	pState->m_pfnCallbackDie = CallbackDie;
+	pState->m_pCallbackCtx = pCallbackCtx;
 }
 
 } // namespace TWBL
