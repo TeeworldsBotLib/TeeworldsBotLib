@@ -196,7 +196,7 @@ public:
 			pCallback(aBuf, i + 1);
 		}
 #else
-		pCallback("to use tracing compile with -DTWBL_DEBUG=ON");
+		pCallback("to use tracing compile with -DTWBL_DEBUG=ON", 0);
 #endif
 	}
 
