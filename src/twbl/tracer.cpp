@@ -2,7 +2,7 @@
 
 #include "tracer.h"
 
-void twbl_default_log_tracer(const char *pLine, int Offset)
+void twbl_default_log_tracer(const char *pLine, int Offset, void *pContext)
 {
 	// if you do not want to see a full path in the log
 	// you can implement your own tracer

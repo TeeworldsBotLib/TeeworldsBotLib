@@ -18,7 +18,7 @@
 #endif
 
 typedef void (*FCallbackDie)(CCharacter *pChr);
-typedef void (*FStrTraceCallback)(const char *pStr, int Offset);
+typedef void (*FStrTraceCallback)(const char *pStr, int Offset, void *pContext);
 
 class CServerBotStateIn
 {
@@ -177,13 +177,13 @@ public:
 #endif
 	}
 
-	void TraceDir(FStrTraceCallback pCallback = twbl_default_log_tracer, int MaxHist = TWBL_MAX_LOG_LEN) const
+	void TraceDir(FStrTraceCallback pCallback = twbl_default_log_tracer, void *pContext = nullptr, int MaxHist = TWBL_MAX_LOG_LEN) const
 	{
 #ifdef TWBL_DEBUG
 		char aLine[512];
 		char aBuf[512];
 		str_format(aLine, sizeof(aLine), "Dir=%d", m_Direction);
-		pCallback(aLine, 0);
+		pCallback(aLine, 0, pContext);
 
 		for(int i = 0; i < TWBL_MAX_LOG_LEN; i++)
 		{
@@ -193,10 +193,10 @@ public:
 				break;
 
 			str_format(aBuf, sizeof(aBuf), "  %s", aLine);
-			pCallback(aBuf, i + 1);
+			pCallback(aBuf, i + 1, pContext);
 		}
 #else
-		pCallback("to use tracing compile with -DTWBL_DEBUG=ON", 0);
+		pCallback("to use tracing compile with -DTWBL_DEBUG=ON", 0, nullptr);
 #endif
 	}
 
