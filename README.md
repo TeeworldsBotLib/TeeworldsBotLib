@@ -23,6 +23,11 @@ Edit your server's CMakeLists.txt and insert those lines above `add_executable(g
   # )
 
   # twbl start
+
+  if(TWBL_DEBUG)
+    add_definitions( -DTWBL_DEBUG )
+  endif()
+
   set(TWBL_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src/external/TeeworldsBotLib)
   include_directories(${TWBL_ROOT}/src)
   FILE(GLOB TWBL_SRC
