@@ -1,4 +1,5 @@
 #include <bots/base.h>
+#include <twbl/teeworlds/collision.h>
 
 #include "base_engine.h"
 
@@ -12,6 +13,26 @@ CBaseEngine::CBaseEngine(CBaseBot *pBaseBot) :
 CBaseBot *CBaseEngine::Bot()
 {
 	return m_pBaseBot;
+}
+
+const CCollision *CBaseEngine::Collision()
+{
+	return Bot()->Collision();
+}
+
+CCharacter *CBaseEngine::Character(int ClientId)
+{
+	return Bot()->Character(ClientId);
+}
+
+CPlayer *CBaseEngine::GetPlayer(int ClientId)
+{
+	return Bot()->GetPlayer(ClientId);
+}
+
+CCharacter *CBaseEngine::ClosestCharacter(vec2 Pos, const CCharacter *pNotThis)
+{
+	return Bot()->ClosestCharacter(Pos, pNotThis);
 }
 
 vec2 CBaseEngine::GetPos()

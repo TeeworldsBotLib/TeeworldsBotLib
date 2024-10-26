@@ -16,6 +16,11 @@ class CBaseEngine
 protected:
 	CBaseBot *Bot();
 
+	const CCollision *Collision();
+	CCharacter *Character(int ClientId = -1);
+	CPlayer *GetPlayer(int ClientId = -1);
+	CCharacter *ClosestCharacter(vec2 Pos, const CCharacter *pNotThis);
+
 	vec2 GetPos();
 	vec2 GetVel();
 	bool IsGrounded();
