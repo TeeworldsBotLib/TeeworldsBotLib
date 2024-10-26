@@ -69,6 +69,86 @@ void str_timestamp_ex(time_t time, char *buffer, int buffer_size, const char *fo
 void str_format(char *buffer, int buffer_size, const char *format, ...)
 	GNUC_ATTRIBUTE((format(printf, 3, 4)));
 
+/**
+ * Appends a string to another.
+ *
+ * @ingroup Strings
+ *
+ * @param dst Pointer to a buffer that contains a string.
+ * @param src String to append.
+ * @param dst_size Size of the buffer of the dst string.
+ *
+ * @remark The strings are treated as zero-terminated strings.
+ * @remark Guarantees that dst string will contain zero-termination.
+ */
+void str_append(char *dst, const char *src, int dst_size);
+
+/**
+ * Appends a string to a fixed-size array of chars.
+ *
+ * @ingroup Strings
+ *
+ * @param dst Array that shall receive the string.
+ * @param src String to append.
+ *
+ * @remark The strings are treated as zero-terminated strings.
+ * @remark Guarantees that dst string will contain zero-termination.
+ */
+template<int N>
+void str_append(char (&dst)[N], const char *src)
+{
+	str_append(dst, src, N);
+}
+
+/**
+ * Copies a string to another.
+ *
+ * @ingroup Strings
+ *
+ * @param dst Pointer to a buffer that shall receive the string.
+ * @param src String to be copied.
+ * @param dst_size Size of the buffer dst.
+ *
+ * @return Length of written string, even if it has been truncated
+ *
+ * @remark The strings are treated as zero-terminated strings.
+ * @remark Guarantees that dst string will contain zero-termination.
+ */
+void str_copy(char *dst, const char *src, int dst_size);
+
+/**
+ * Copies a string to a fixed-size array of chars.
+ *
+ * @ingroup Strings
+ *
+ * @param dst Array that shall receive the string.
+ * @param src String to be copied.
+ *
+ * @remark The strings are treated as zero-terminated strings.
+ * @remark Guarantees that dst string will contain zero-termination.
+ */
+template<int N>
+void str_copy(char (&dst)[N], const char *src)
+{
+	str_copy(dst, src, N);
+}
+
+/**
+ * Truncates a string to a given length.
+ *
+ * @ingroup Strings
+ *
+ * @param dst Pointer to a buffer that shall receive the string.
+ * @param dst_size Size of the buffer dst.
+ * @param src String to be truncated.
+ * @param truncation_len Maximum length of the returned string (not
+ * counting the zero termination).
+ *
+ * @remark The strings are treated as zero-terminated strings.
+ * @remark Guarantees that dst string will contain zero-termination.
+ */
+void str_truncate(char *dst, int dst_size, const char *src, int truncation_len);
+
 /*
 	Function: dbg_msg
 

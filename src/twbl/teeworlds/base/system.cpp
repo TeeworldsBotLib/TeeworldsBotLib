@@ -60,6 +60,41 @@ void str_format(char *buffer, int buffer_size, const char *format, ...)
 	buffer[buffer_size - 1] = 0; /* assure null termination */
 }
 
+void str_append(char *dst, const char *src, int dst_size)
+{
+	int s;
+	int i = 0;
+	dbg_assert(dst_size > 0, "dst_size invalid");
+	s = str_length(dst);
+	while(s < dst_size)
+	{
+		dst[s] = src[i];
+		if(!src[i]) /* check for null termination */
+			break;
+		s++;
+		i++;
+	}
+
+	dst[dst_size - 1] = 0; /* assure null termination */
+}
+
+void str_copy(char *dst, const char *src, int dst_size)
+{
+	dbg_assert(dst_size > 0, "dst_size invalid");
+	dst[0] = '\0';
+	strncat(dst, src, dst_size - 1);
+}
+
+void str_truncate(char *dst, int dst_size, const char *src, int truncation_len)
+{
+	int size = dst_size;
+	if(truncation_len < size)
+	{
+		size = truncation_len + 1;
+	}
+	str_copy(dst, src, size);
+}
+
 void dbg_break()
 {
 #ifdef __GNUC__
