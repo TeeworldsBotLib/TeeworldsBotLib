@@ -7,9 +7,23 @@
 class CMockCallbackCtx : public TWBL::CCallbackCtx
 {
 public:
+	/*   _
+	 *  | |__   __ _ ___  ___
+	 *  | '_ \ / _` / __|/ _ \
+	 *  | |_) | (_| \__ \  __/
+	 *  |_.__/ \__,_|___/\___|
+	 */
+
 	void SendChat(int Team, const char *pText) override;
 	void Die() override;
 	void Emote(int Emoticon) override;
+
+	/*                  _
+	 *    ___ _   _ ___| |_ ___  _ __ ___
+	 *   / __| | | / __| __/ _ \| '_ ` _ \
+	 *  | (__| |_| \__ \ || (_) | | | | | |
+	 *   \___|\__,_|___/\__\___/|_| |_| |_|
+	 */
 };
 
 #endif
