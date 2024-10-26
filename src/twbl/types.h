@@ -133,8 +133,8 @@ public:
 	bool TraceDirStrOffset(char *pBuf, int BufSize, int Offset) const
 	{
 		pBuf[0] = '\0';
-		char aLine[512];
 #ifdef TWBL_DEBUG
+		char aLine[512];
 		if(m_apDirFiles[Offset][0] == '\0')
 			return false;
 
@@ -157,8 +157,8 @@ public:
 	void TraceDirStrFull(char *pBuf, int BufSize, int MaxHist = TWBL_MAX_LOG_LEN) const
 	{
 		pBuf[0] = '\0';
-		char aLine[512];
 #ifdef TWBL_DEBUG
+		char aLine[512];
 		str_format(aLine, sizeof(aLine), "Dir=%d", m_Direction);
 		str_append(pBuf, aLine, BufSize);
 
@@ -179,9 +179,9 @@ public:
 
 	void TraceDir(FStrTraceCallback pCallback = twbl_default_log_tracer, int MaxHist = TWBL_MAX_LOG_LEN) const
 	{
+#ifdef TWBL_DEBUG
 		char aLine[512];
 		char aBuf[512];
-#ifdef TWBL_DEBUG
 		str_format(aLine, sizeof(aLine), "Dir=%d", m_Direction);
 		pCallback(aLine, 0);
 
