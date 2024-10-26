@@ -5,7 +5,7 @@
 
 namespace TWBL {
 
-class CSampleEngine : public CBaseEngine
+class TWBL_HOT CSampleEngine : public CBaseEngine
 {
 public:
 	using CBaseEngine::CBaseEngine;

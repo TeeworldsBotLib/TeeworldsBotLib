@@ -3,6 +3,7 @@
 
 #include <cstddef>
 
+#include <twbl/hotreload.h>
 #include <twbl/teeworlds/base/system.h>
 #include <twbl/teeworlds/base/vmath.h>
 #include <twbl/teeworlds/character.h>
@@ -10,14 +11,6 @@
 
 #include <twbl/state.h>
 #include <twbl/types.h>
-
-#if defined(__GNUC__) && __GNUC__ >= 4
-#define TWBL_HOT __attribute__((visibility("hidden")))
-#elif defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590)
-#define TWBL_HOT __attribute__((visibility("hidden")))
-#else
-#define TWBL_HOT
-#endif
 
 namespace TWBL {
 

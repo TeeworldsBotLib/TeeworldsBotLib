@@ -1,6 +1,7 @@
 #ifndef TWBL_SRC_ENGINES_BASE_ENGINE_H
 #define TWBL_SRC_ENGINES_BASE_ENGINE_H
 
+#include <twbl/hotreload.h>
 #include <twbl/teeworlds/base/vmath.h>
 #include <twbl/teeworlds/character.h>
 
