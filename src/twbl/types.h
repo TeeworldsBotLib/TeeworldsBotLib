@@ -3,6 +3,8 @@
 
 #include <cstdio>
 #include <cstring>
+#include <twbl/teeworlds/base/system.h>
+#include <twbl/tracer.h>
 
 #include <twbl/callback_ctx.h>
 #include <twbl/teeworlds/character.h>
@@ -16,6 +18,7 @@
 #endif
 
 typedef void (*FCallbackDie)(CCharacter *pChr);
+typedef void (*FStrTraceCallback)(const char *pStr, int Offset);
 
 class CServerBotStateIn
 {
@@ -124,6 +127,76 @@ public:
 			m_apEmoteFiles[i] = "";
 			m_aEmoteLines[i] = 0;
 		}
+#endif
+	}
+
+	bool TraceDirStrOffset(char *pBuf, int BufSize, int Offset) const
+	{
+		pBuf[0] = '\0';
+		char aLine[512];
+#ifdef TWBL_DEBUG
+		if(m_apDirFiles[Offset][0] == '\0')
+			return false;
+
+		str_format(
+			aLine,
+			sizeof(aLine),
+			"%s:%d %s() '%s'",
+			m_apDirFiles[Offset],
+			m_aDirLines[Offset],
+			m_apDirFunctions[Offset],
+			m_apDirComments[Offset]);
+		str_append(pBuf, aLine, BufSize);
+		return true;
+#else
+		str_copy(pBuf, "to use tracing compile with -DTWBL_DEBUG=ON", BufSize);
+		return false;
+#endif
+	}
+
+	void TraceDirStrFull(char *pBuf, int BufSize, int MaxHist = TWBL_MAX_LOG_LEN) const
+	{
+		pBuf[0] = '\0';
+		char aLine[512];
+#ifdef TWBL_DEBUG
+		str_format(aLine, sizeof(aLine), "Dir=%d", m_Direction);
+		str_append(pBuf, aLine, BufSize);
+
+		for(int i = 0; i < TWBL_MAX_LOG_LEN; i++)
+		{
+			if(i > MaxHist)
+				break;
+			if(!TraceDirStrOffset(aLine, sizeof(aLine), i))
+				break;
+
+			str_append(pBuf, ", ", BufSize);
+			str_append(pBuf, aLine, BufSize);
+		}
+#else
+		str_copy(pBuf, "to use tracing compile with -DTWBL_DEBUG=ON", BufSize);
+#endif
+	}
+
+	void TraceDir(FStrTraceCallback pCallback = twbl_default_log_tracer, int MaxHist = TWBL_MAX_LOG_LEN) const
+	{
+		char aLine[512];
+		char aBuf[512];
+#ifdef TWBL_DEBUG
+		str_format(aLine, sizeof(aLine), "Dir=%d", m_Direction);
+		pCallback(aLine, 0);
+
+		for(int i = 0; i < TWBL_MAX_LOG_LEN; i++)
+		{
+			if(i > MaxHist)
+				break;
+			if(!TraceDirStrOffset(aLine, sizeof(aLine), i))
+				break;
+
+			str_format(aBuf, sizeof(aBuf), "  %s", aLine);
+			pCallback(aBuf, i + 1);
+		}
+#else
+		pCallback("to use tracing compile with -DTWBL_DEBUG=ON");
 #endif
 	}
 

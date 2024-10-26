@@ -5,6 +5,7 @@
 #include <test/twbl_assert.h>
 #include <twbl/callback_ctx.h>
 #include <twbl/state.h>
+#include <twbl/teeworlds/base/system.h>
 #include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/player.h>
 #include <twbl/types.h>
@@ -90,6 +91,14 @@ static void TestBasic()
 	BotChar.m_Pos.x = 20 * 32;
 	Twbl_SampleTick(&State, &Bot, &PersistentState, sizeof(PersistentState));
 	EXPECT_STREQ(Bot.m_apDirComments[0], "go left till 10");
+
+	// char aDir[2048];
+	// Bot.TraceDirStrFull(aDir, sizeof(aDir));
+	// dbg_msg("test", "%s", aDir);
+
+	dbg_msg("test", "---");
+
+	Bot.TraceDir();
 }
 
 int main()
