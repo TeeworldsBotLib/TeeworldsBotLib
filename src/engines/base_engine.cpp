@@ -5,6 +5,13 @@
 
 namespace TWBL {
 
+/*   _
+ *  | |__   __ _ ___  ___
+ *  | '_ \ / _` / __|/ _ \
+ *  | |_) | (_| \__ \  __/
+ *  |_.__/ \__,_|___/\___|
+ */
+
 CBaseEngine::CBaseEngine(CBaseBot *pBaseBot) :
 	m_pBaseBot(pBaseBot)
 {
@@ -69,5 +76,12 @@ int CBaseEngine::GameTick()
 {
 	return Bot()->GameTick();
 }
+
+/*                  _
+ *    ___ _   _ ___| |_ ___  _ __ ___
+ *   / __| | | / __| __/ _ \| '_ ` _ \
+ *  | (__| |_| \__ \ || (_) | | | | | |
+ *   \___|\__,_|___/\__\___/|_| |_| |_|
+ */
 
 } // namespace TWBL

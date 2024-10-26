@@ -11,6 +11,13 @@ class CBaseBot;
 
 class CBaseEngine
 {
+	/*   _
+	 *  | |__   __ _ ___  ___
+	 *  | '_ \ / _` / __|/ _ \
+	 *  | |_) | (_| \__ \  __/
+	 *  |_.__/ \__,_|___/\___|
+	 */
+
 	CBaseBot *m_pBaseBot;
 
 protected:
@@ -31,6 +38,13 @@ protected:
 
 public:
 	CBaseEngine(CBaseBot *pBaseBot);
+
+	/*                  _
+	 *    ___ _   _ ___| |_ ___  _ __ ___
+	 *   / __| | | / __| __/ _ \| '_ ` _ \
+	 *  | (__| |_| \__ \ || (_) | | | | | |
+	 *   \___|\__,_|___/\__\___/|_| |_| |_|
+	 */
 };
 
 } // namespace TWBL
