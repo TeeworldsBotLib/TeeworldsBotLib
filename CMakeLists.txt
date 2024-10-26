@@ -34,6 +34,10 @@ FILE(GLOB BOT_SOURCE_FILES
     src/bots/*/*.h
     src/bots/*.cpp
     src/bots/*.h
+    src/engines/*/*.cpp
+    src/engines/*/*.h
+    src/engines/*.cpp
+    src/engines/*.h
 )
 
 set(TWBL_DEPS ${CMAKE_DL_LIBS})
@@ -91,4 +95,5 @@ endfunction()
 
 register_test("sample")
 register_test("follow")
+register_test("engine_sample")
 
