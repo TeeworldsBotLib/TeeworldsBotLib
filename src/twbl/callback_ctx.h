@@ -2,6 +2,7 @@
 #define TWBL_SRC_TWBL_CALLBACK_CTX_H
 
 #include <twbl/teeworlds/base/vmath.h>
+#include <twbl/teeworlds/character.h>
 
 namespace TWBL {
 
@@ -16,10 +17,16 @@ public:
 	 */
 
 	virtual ~CCallbackCtx() = default;
+
+	// actions
 	virtual void SendChat(int Team, const char *pText) = 0;
 	virtual void Die() = 0;
 	virtual void Emote(int Emoticon) = 0;
 
+	// checks
+	virtual bool IsFrozen(const CCharacter *pChr = nullptr) = 0;
+
+	// getters
 	int m_ClientId = 0;
 	int GetCid() { return m_ClientId; }
 

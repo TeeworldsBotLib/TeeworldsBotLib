@@ -3,6 +3,7 @@
 
 #include <twbl/callback_ctx.h>
 #include <twbl/teeworlds/base/system.h>
+#include <twbl/teeworlds/character.h>
 
 class CMockCallbackCtx : public TWBL::CCallbackCtx
 {
@@ -17,6 +18,8 @@ public:
 	void SendChat(int Team, const char *pText) override;
 	void Die() override;
 	void Emote(int Emoticon) override;
+
+	bool IsFrozen(const CCharacter *pChr = nullptr) override;
 
 	/*                  _
 	 *    ___ _   _ ___| |_ ___  _ __ ___

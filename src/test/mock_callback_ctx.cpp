@@ -24,6 +24,11 @@ void CMockCallbackCtx::Emote(int Emoticon)
 {
 }
 
+bool CMockCallbackCtx::IsFrozen(const CCharacter *pChr)
+{
+	return pChr->m_FreezeTime != 0;
+}
+
 /*                  _
  *    ___ _   _ ___| |_ ___  _ __ ___
  *   / __| | | / __| __/ _ \| '_ ` _ \

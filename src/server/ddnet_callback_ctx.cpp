@@ -1,3 +1,4 @@
+#include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/gamecontext.h>
 
 #include "ddnet_callback_ctx.h"
@@ -30,6 +31,18 @@ void CDDNetCallbackCtx::Die()
 
 void CDDNetCallbackCtx::Emote(int Emoticon)
 {
+}
+
+bool CDDNetCallbackCtx::IsFrozen(const CCharacter *pChr)
+{
+	// legacy deep is -1
+	// nowerdays its a bool
+	// this should be properly supported with
+	// https://github.com/TeeworldsBotLib/TeeworldsBotLib/issues/6
+	// then the line below should say IsDeepeFrozen(pChr) instead
+	if(pChr->m_FreezeTime == -1)
+		return true;
+	return pChr->m_FreezeTime != 0;
 }
 
 } // namespace TWBL
