@@ -46,6 +46,11 @@ public:
 		m_pState->m_TwblTicks++;
 	}
 
+	// access your variables here
+	// they will be stored across ticks
+	//
+	// to create new variables edit
+	// src/twbl/state.h
 	CTwblPersistentState *State() { return m_pState; }
 
 	const CCollision *Collision() const { return m_pStateIn->m_pCollision; }
