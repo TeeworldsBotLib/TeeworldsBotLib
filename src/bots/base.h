@@ -58,6 +58,17 @@ public:
 	bool IsFrozen(CCharacter *pChr = nullptr);
 	bool TicksPassed(int Ticks) { return m_pStateIn->m_GameTick % Ticks == 0; }
 	int GameTick() { return m_pStateIn->m_GameTick; }
+	// returns the current walking direction set by Left(), Right(), SetDirection()
+	int GetDirection() { return m_pStateOut->m_Direction; }
+	// returns the current hook state set by Hook()
+	int GetHook() { return m_pStateOut->m_Hook; }
+	int GetJump() { return m_pStateOut->m_Jump; }
+	int GetFire() { return m_pStateOut->m_Fire; }
+	int GetAimX() { return m_pStateOut->m_TargetX; }
+	int GetAimY() { return m_pStateOut->m_TargetY; }
+	vec2 GetAim() { return vec2(GetAimX(), GetAimY()); }
+	// returns the current desired weapon set by SetWeapon()
+	int GetWeapon() { return m_pStateOut->m_Weapon; }
 
 	// there is only raw chat and no macro
 	// because tracking chat is rarely needed
