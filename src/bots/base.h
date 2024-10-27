@@ -46,6 +46,8 @@ public:
 		m_pState->m_TwblTicks++;
 	}
 
+	CTwblPersistentState *State() { return m_pState; }
+
 	const CCollision *Collision() const { return m_pStateIn->m_pCollision; }
 	CCharacter *Character(int ClientId = -1);
 	CPlayer *GetPlayer(int ClientId = -1);
