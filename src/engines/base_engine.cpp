@@ -32,6 +32,11 @@ CCharacter *CBaseEngine::Character(int ClientId)
 	return Bot()->Character(ClientId);
 }
 
+int CBaseEngine::GetTile(vec2 Pos)
+{
+	return Collision()->GetTile(Pos.x, Pos.y);
+}
+
 CPlayer *CBaseEngine::GetPlayer(int ClientId)
 {
 	return Bot()->GetPlayer(ClientId);
