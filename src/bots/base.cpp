@@ -62,6 +62,11 @@ bool CBaseBot::IsFrozen(CCharacter *pChr)
 	return pChr->m_FreezeTime != 0;
 }
 
+int CBaseBot::GetTile(vec2 Pos)
+{
+	return Collision()->GetTile(Pos.x, Pos.y);
+}
+
 void PushRingStr(const char **ppBuffer, const char *pNew, size_t MaxEntries)
 {
 	for(int i = MaxEntries - 1; i > 0; i--)

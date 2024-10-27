@@ -53,10 +53,15 @@ public:
 	// src/twbl/state.h
 	CTwblPersistentState *State() { return m_pState; }
 
+	vec4 ColorRed() { return vec4(1, 0, 0, 0.6f); }
+	vec4 ColorGreen() { return vec4(0, 1, 0, 0.6f); }
+
 	const CCollision *Collision() const { return m_pStateIn->m_pCollision; }
 	CCharacter *Character(int ClientId = -1);
 	CPlayer *GetPlayer(int ClientId = -1);
 	CCharacter *ClosestCharacter(vec2 Pos, const CCharacter *pNotThis);
+
+	int GetTile(vec2 Pos);
 
 	vec2 GetPos() { return Character()->GetPos(); }
 	vec2 GetVel() { return Character()->Core()->m_Vel; }
