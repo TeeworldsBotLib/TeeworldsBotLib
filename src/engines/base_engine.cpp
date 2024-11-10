@@ -34,7 +34,7 @@ CCharacter *CBaseEngine::Character(int ClientId)
 
 int CBaseEngine::GetTile(vec2 Pos)
 {
-	return Collision()->GetTile(Pos.x, Pos.y);
+	return Collision()->GetTileIndex(Collision()->GetPureMapIndex(Pos));
 }
 
 CPlayer *CBaseEngine::GetPlayer(int ClientId)
