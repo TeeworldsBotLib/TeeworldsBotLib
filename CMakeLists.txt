@@ -49,6 +49,7 @@ target_link_libraries(twbl ${TWBL_DEPS})
 include_directories(src)
 
 if(TARGET_OS STREQUAL "windows")
+    # definitions from ddnet
     # See https://learn.microsoft.com/en-us/windows/win32/winprog/using-the-windows-headers
     add_compile_definitions(${target} PRIVATE NOMINMAX) # windows.h shouldn't define min/max macros
     add_compile_definitions(${target} PRIVATE WIN32_LEAN_AND_MEAN) # windows.h shouldn't define the name IStorage
@@ -58,6 +59,10 @@ if(TARGET_OS STREQUAL "windows")
     add_compile_definitions(${target} PRIVATE _WIN32_WINNT=0x0600) # Minimum OS version (old macro, both must be defined)
     add_compile_definitions(${target} PRIVATE UNICODE) # Windows headers
     add_compile_definitions(${target} PRIVATE _UNICODE) # C-runtime
+
+    # twbl specific hack for #ifdef WIN32 checks
+    # to avoid detect.h on windows systems that dont define WIN32 like mingw
+    add_compile_definitions(${target} PRIVATE WIN32)
 endif()
 
 set(LINK_FLAGS_PLATFORM "")

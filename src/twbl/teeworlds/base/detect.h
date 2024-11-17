@@ -8,6 +8,8 @@
 /* windows Family */
 #if defined(WIN64) || defined(_WIN64)
 #define CONF_FAMILY_WINDOWS 1
+#elif defined(WIN32) || defined(_WIN32) || defined(__CYGWIN32__) || defined(__MINGW32__)
+#define CONF_FAMILY_WINDOWS 1
 #endif
 
 /* unix family */
