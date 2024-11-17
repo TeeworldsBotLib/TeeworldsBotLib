@@ -1,7 +1,9 @@
 #include <cstdio>
 #include <cstdlib>
 
-#ifdef WIN32
+#include <twbl/teeworlds/base/detect.h>
+
+#ifdef CONF_FAMILY_WINDOWS
 // TODO: windows api
 #else
 #include <dlfcn.h>
@@ -59,7 +61,7 @@ void *CHotreloader::LoadTick(FTwbl_BotTick *ppfnBotTick)
 
 	UnloadTick();
 
-#ifdef WIN32
+#ifdef CONF_FAMILY_WINDOWS
 	return nullptr;
 #else
 	char aTickfunc[512];
@@ -106,7 +108,7 @@ void *CHotreloader::LoadTick(FTwbl_BotTick *ppfnBotTick)
 
 int CHotreloader::CloseHandle(void *pHandle)
 {
-#ifdef WIN32
+#ifdef CONF_FAMILY_WINDOWS
 	return 0;
 #else
 	return dlclose(pHandle);

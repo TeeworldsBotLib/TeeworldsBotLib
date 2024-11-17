@@ -1,5 +1,8 @@
 // TODO: windows https://github.com/dlfcn-win32/dlfcn-win32
-#ifdef WIN32
+
+#include <twbl/teeworlds/base/detect.h>
+
+#ifdef CONF_FAMILY_WINDOWS
 
 int main() { return 0; }
 
