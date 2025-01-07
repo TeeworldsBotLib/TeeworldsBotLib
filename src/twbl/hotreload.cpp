@@ -64,7 +64,7 @@ void *CHotreloader::LoadTick(FTwbl_BotTick *ppfnBotTick)
 #ifdef CONF_FAMILY_WINDOWS
 	return nullptr;
 #else
-	char aTickfunc[512];
+	char aTickfunc[1024];
 	snprintf(aTickfunc, sizeof(aTickfunc), "Twbl_%sTickHot", pTickname);
 
 	if(m_pHandle)
