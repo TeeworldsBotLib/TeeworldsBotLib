@@ -6,6 +6,8 @@
 
 #if __has_include(<game/server/entities/character.h>)
 #include <game/server/entities/character.h>
+#include <game/server/player.h>
+#include <engine/shared/protocol.h>
 #else
 class CCharacterCore
 {
