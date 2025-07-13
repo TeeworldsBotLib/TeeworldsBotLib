@@ -4,10 +4,9 @@
 #if __has_include(<engine/shared/protocol.h>)
 #include <engine/shared/protocol.h>
 #else
-enum
-{
-	MAX_CLIENTS = 128,
-};
+#ifndef MAX_CLIENTS
+#define MAX_CLIENTS 64
+#endif
 #endif
 
 #if __has_include(<game/generated/protocol.h>)
