@@ -5,6 +5,7 @@
 #include <bots/base.h>
 
 #include <twbl/state.h>
+#include <twbl/teeworlds/base/system.h>
 #include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/player.h>
 #include <twbl/types.h>

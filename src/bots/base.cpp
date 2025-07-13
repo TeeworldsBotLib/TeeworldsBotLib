@@ -1,6 +1,8 @@
 #include <cstdio>
 
 #include <bots/base.h>
+#include <twbl/teeworlds/base/vmath.h>
+#include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/protocol.h>
 #include <twbl/types.h>
 

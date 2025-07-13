@@ -1,3 +1,6 @@
+#include <twbl/state.h>
+#include <twbl/teeworlds/base/system.h>
+
 #include "engine_sample.h"
 
 #include <bots/def_macros.h>

@@ -1,5 +1,6 @@
 #include <bots/base.h>
 #include <twbl/teeworlds/collision.h>
+#include <twbl/teeworlds/player.h>
 
 #include "base_engine.h"
 

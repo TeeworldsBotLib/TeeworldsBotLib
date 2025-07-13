@@ -1,6 +1,7 @@
 // TODO: windows https://github.com/dlfcn-win32/dlfcn-win32
 
 #include <twbl/teeworlds/base/detect.h>
+#include <twbl/teeworlds/collision.h>
 
 #ifdef CONF_FAMILY_WINDOWS
 
@@ -12,7 +13,6 @@ int main() { return 0; }
 #include <cstdlib>
 #include <cstring>
 #include <dlfcn.h>
-#include <sys/stat.h>
 
 #include <twbl/types.h>
 
