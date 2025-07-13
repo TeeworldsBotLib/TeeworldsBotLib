@@ -1,5 +1,6 @@
 #include <twbl/teeworlds/character.h>
 #include <twbl/teeworlds/gamecontext.h>
+#include <twbl/teeworlds/protocol.h>
 
 #include "ddnet_callback_ctx.h"
 
