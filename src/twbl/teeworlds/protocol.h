@@ -9,7 +9,9 @@
 #endif
 #endif
 
-#if __has_include(<game/generated/protocol.h>)
+#if __has_include(<generated/protocol.h>)
+#include <generated/protocol.h>
+#elif __has_include(<game/generated/protocol.h>)
 #include <game/generated/protocol.h>
 #else
 
