@@ -2,6 +2,7 @@
 #define TWBL_SRC_ENGINES_BASE_ENGINE_H
 
 #include <twbl/hotreload.h>
+#include <twbl/teeworlds/base/color.h>
 #include <twbl/teeworlds/base/vmath.h>
 #include <twbl/teeworlds/character.h>
 
@@ -23,8 +24,8 @@ class CBaseEngine
 protected:
 	CBaseBot *Bot();
 
-	vec4 ColorRed() { return vec4(1, 0, 0, 0.6f); }
-	vec4 ColorGreen() { return vec4(0, 1, 0, 0.6f); }
+	ColorRGBA ColorRed() { return ColorRGBA(1, 0, 0, 0.6f); }
+	ColorRGBA ColorGreen() { return ColorRGBA(0, 1, 0, 0.6f); }
 
 	const CCollision *Collision();
 	CCharacter *Character(int ClientId = -1);
