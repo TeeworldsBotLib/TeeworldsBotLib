@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.12...3.27.4)
 
 project(twbl)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED On)
 
 option(TWBL_DEBUG "activate bot debug comments" OFF)
@@ -43,7 +43,7 @@ FILE(GLOB BOT_SOURCE_FILES
 set(TWBL_DEPS ${CMAKE_DL_LIBS})
 
 add_library(twbl STATIC ${BOT_SOURCE_FILES})
-target_compile_options(twbl PRIVATE -std=gnu++17)
+target_compile_options(twbl PRIVATE -std=gnu++20)
 add_compiler_flag_if_supported(-Wno-format-truncation)
 target_link_libraries(twbl ${TWBL_DEPS})
 include_directories(src)
@@ -74,7 +74,7 @@ endif()
 
 add_executable(twbl_probe ${BOT_SOURCE_FILES} src/tools/twbl_probe.cpp)
 target_link_libraries(twbl_probe ${TWBL_DEPS} ${LINK_FLAGS_PLATFORM})
-target_compile_options(twbl_probe PRIVATE -std=gnu++17)
+target_compile_options(twbl_probe PRIVATE -std=gnu++20)
 
 # tests
 
@@ -89,7 +89,7 @@ function(register_test test_name)
     set(test_target "test_${test_name}")
     add_executable(${test_target} ${TEST_SOURCE_FILES})
     target_link_libraries(${test_target} twbl ${TWBL_DEPS} ${LINK_FLAGS_PLATFORM})
-    target_compile_options(${test_target} PRIVATE -std=gnu++17)
+    target_compile_options(${test_target} PRIVATE -std=gnu++20)
     add_test(NAME ${test_target}
              COMMAND ${test_target})
 endfunction()

@@ -7,10 +7,14 @@
 
 #include <algorithm>
 #include <cmath>
+#include <concepts>
 #include <cstdlib>
 #include <limits>
 
 using std::clamp;
+
+template<typename T>
+concept Numeric = std::integral<T> || std::floating_point<T>;
 
 constexpr float pi = 3.1415926535897932384626433f;
 

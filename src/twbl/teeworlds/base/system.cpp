@@ -1,3 +1,4 @@
+#include <cstdlib>
 #if __has_include(<base/system.h>)
 // TODO: find a better conditon than having the file base/system.h
 //       this is a polyfill of system.cpp when compiled as external library
@@ -232,6 +233,71 @@ int fs_is_file(const char *path)
 		return 0;
 	return S_ISREG(sb.st_mode) ? 1 : 0;
 #endif
+}
+
+bool str_isnum(char c)
+{
+	return c >= '0' && c <= '9';
+}
+
+int str_isallnum_hex(const char *str)
+{
+	while(*str)
+	{
+		if(!str_isnum(*str) && !(*str >= 'a' && *str <= 'f') && !(*str >= 'A' && *str <= 'F'))
+			return 0;
+		str++;
+	}
+	return 1;
+}
+
+int str_toint(const char *str)
+{
+	return str_toint_base(str, 10);
+}
+
+bool str_toint(const char *str, int *out)
+{
+	// returns true if conversion was successful
+	char *end;
+	int value = strtol(str, &end, 10);
+	if(*end != '\0')
+		return false;
+	if(out != nullptr)
+		*out = value;
+	return true;
+}
+
+int str_toint_base(const char *str, int base)
+{
+	return strtol(str, nullptr, base);
+}
+
+unsigned long str_toulong_base(const char *str, int base)
+{
+	return strtoul(str, nullptr, base);
+}
+
+int64_t str_toint64_base(const char *str, int base)
+{
+	return strtoll(str, nullptr, base);
+}
+
+float str_tofloat(const char *str)
+{
+	return strtod(str, nullptr);
+}
+
+bool str_tofloat(const char *str, float *out)
+{
+	// returns true if conversion was successful
+	char *end;
+	float value = strtod(str, &end);
+	if(*end != '\0')
+		return false;
+	if(out != nullptr)
+		*out = value;
+	return true;
 }
 
 #endif // __has_include(<base/system.h>)

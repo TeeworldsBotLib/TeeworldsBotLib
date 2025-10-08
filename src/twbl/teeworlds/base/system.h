@@ -1,6 +1,7 @@
 #ifndef TWBL_SRC_TWBL_TEEWORLDS_BASE_SYSTEM_H
 #define TWBL_SRC_TWBL_TEEWORLDS_BASE_SYSTEM_H
 
+#include <cstdint>
 #if __has_include(<base/system.h>)
 #include <base/system.h>
 #else
@@ -217,6 +218,17 @@ int fs_file_time(const char *name, time_t *created, time_t *modified);
  * @remark The strings are treated as zero-terminated strings.
  */
 int fs_is_file(const char *path);
+
+bool str_isnum(char c);
+int str_isallnum_hex(const char *str);
+
+int str_toint(const char *str);
+bool str_toint(const char *str, int *out);
+int str_toint_base(const char *str, int base);
+unsigned long str_toulong_base(const char *str, int base);
+int64_t str_toint64_base(const char *str, int base = 10);
+float str_tofloat(const char *str);
+bool str_tofloat(const char *str, float *out);
 
 #endif // __has_include(<base/system.h>)
 #endif // TWBL_SRC_TWBL_TEEWORLDS_BASE_SYSTEM_H
