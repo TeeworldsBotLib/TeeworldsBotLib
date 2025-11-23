@@ -127,7 +127,7 @@ public:
 	void _SetWeaponRaw(int Value) const;
 	void _SetWeapon(int Value, const char *pComment, const char *pFunction, const char *pFile, int Line) const;
 
-	void Tick(){};
+	void Tick() {};
 };
 
 } // namespace TWBL
