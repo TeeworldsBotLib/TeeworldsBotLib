@@ -1,6 +1,6 @@
 #include <cstdlib>
 #if __has_include(<base/system.h>)
-// TODO: find a better conditon than having the file base/system.h
+// TODO: find a better condition than having the file base/system.h
 //       this is a polyfill of system.cpp when compiled as external library
 //       so standalone tests can use things like dbg_msg()
 #else

@@ -173,7 +173,7 @@ void CCharacter::Tick()
 ## the idea
 
 Have a well defined api for server side teeworlds bots:
-- ~~It should be easy to setup (less than 10 lines of code in mostly one place).~~ **UPDATE:** this goal had to be sacraficed for hot reload and state support
+- ~~It should be easy to setup (less than 10 lines of code in mostly one place).~~ **UPDATE:** this goal had to be sacrificed for hot reload and state support
 - It should be highly portable and work in basically any teeworlds or ddnet code base.
 - It should be highly debuggable via logging.
 - It should be highly debuggable via visual feedback (api for drawing text and lines at coordinates)
@@ -218,12 +218,12 @@ void CCharacter::OnTick()
 }
 ```
 
-The api promises that it does never keep any internal state accross ticks.
+The api promises that it does never keep any internal state across ticks.
 All the state it needs can be extracted from the world.
 The api operates on a per tick level. With one input and one output.
 There is no IO or any other side effects happening in the api.
 
-These limitations make developing bots a bit more tricky. But it allows to fullfill all the goals.
+These limitations make developing bots a bit more tricky. But it allows to fulfill all the goals.
 It allows for better portability. It allows for clean unit test setups. And it allows to hot reload without breaking state.
 
 ## implementation details debuggability via logging
@@ -269,7 +269,7 @@ This ensures that you can always obtain the "why" for the current state. And als
 ## implementation details debuggability via visual feedback (api for drawing text and lines at coordinates)
 
 An implementation of a twbl bot should be able to give visual feedback in addition to logging for debugging.
-There should be a well defined api similiar to the logging one that allows for the twbl bot code to draw lines.
+There should be a well defined api similar to the logging one that allows for the twbl bot code to draw lines.
 And render text at certain locations. Or render colored simple shapes such as recentangles.
 It is then up to the implementation consuming the twbl bot to actually do the drawing.
 This requires writing some code but it is a optional feature if not implemented the bot will still work the same so that is fine.

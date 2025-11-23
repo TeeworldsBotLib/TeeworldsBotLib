@@ -78,7 +78,7 @@ void *CHotreloader::LoadTick(FTwbl_BotTick *ppfnBotTick)
 	// else
 	// {
 	// 	fprintf(stderr, "[twbl] Error: ignore this error if it is only printed once.\n");
-	// 	fprintf(stderr, "[twbl] Error: twbl no privious handle found for %s\n", pFilename);
+	// 	fprintf(stderr, "[twbl] Error: twbl no previous handle found for %s\n", pFilename);
 	// 	fprintf(stderr, "[twbl] Error: make sure to not recreate the hotreload object. Use static or member variables.\n");
 	// }
 
