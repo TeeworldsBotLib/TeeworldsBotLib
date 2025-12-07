@@ -120,7 +120,7 @@ void ProbeLib(const char *pLibPath)
 
 void usage()
 {
-	puts("usage: twbl_proble <TWBL_LIB>");
+	puts("usage: twbl_probe <TWBL_LIB>");
 	puts("description: prints information about twbl shared objects");
 }
 
