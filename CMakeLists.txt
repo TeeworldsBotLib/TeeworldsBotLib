@@ -44,7 +44,7 @@ set(TWBL_DEPS ${CMAKE_DL_LIBS})
 
 add_library(twbl STATIC ${BOT_SOURCE_FILES})
 target_compile_options(twbl PRIVATE -std=gnu++20)
-add_compiler_flag_if_supported(-Wno-format-truncation)
+add_compiler_flag_if_supported(-Wno-format-truncation -fsigned-char)
 target_link_libraries(twbl ${TWBL_DEPS})
 include_directories(src)
 
