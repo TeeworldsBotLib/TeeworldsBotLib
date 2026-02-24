@@ -61,6 +61,11 @@ if(TARGET_OS STREQUAL "windows")
     add_compile_definitions(${target} PRIVATE _UNICODE) # C-runtime
 endif()
 
+# We assume that char is signed in various places in the code. In particular,
+# the Str.StrToInts test will fail when char is not signed and names containing
+# special characters will be displayed incorrectly on servers.
+add_compiler_flag_if_supported(OUR_FLAGS -fsigned-char)
+
 set(LINK_FLAGS_PLATFORM "")
 
 # use the mock collision from the test code
