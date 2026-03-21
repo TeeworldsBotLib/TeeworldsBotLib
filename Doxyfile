@@ -1,5 +1,4 @@
 PROJECT_NAME           = "DDNet documentation"
-PROJECT_LOGO           = other/icons/DDNet_48x48x32.png
 OUTPUT_DIRECTORY       = docs
 BUILTIN_STL_SUPPORT    = YES
 NUM_PROC_THREADS       = 0
@@ -14,7 +13,6 @@ RECURSIVE              = YES
 EXCLUDE                = src/engine/external \
                          src/masterping/target \
                          src/mastersrv/target
-USE_MDFILE_AS_MAINPAGE = src/README.md
 GENERATE_LATEX         = NO
 MACRO_EXPANSION        = YES
 PREDEFINED             = CONF_FAMILY_UNIX \
