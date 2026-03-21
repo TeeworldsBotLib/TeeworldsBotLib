@@ -10,6 +10,8 @@ log.txt
 *.exe
 *.dll
 *.pyc
+docs/html
+docs/warn.log
 build/
 build-tidy/
 build-*/

@@ -18,12 +18,32 @@ jobs:
       run: |
         sudo apt-get update -y
         sudo apt-get install -y pkg-config cmake cmake build-essential shellcheck
+        mkdir -p ~/.local/bin/
+
+        # clang-format
         wget https://github.com/muttleyxd/clang-tools-static-binaries/releases/download/master-796e77c/clang-format-20_linux-amd64
         echo "bbb30a777d075dfbe91aa146a1ea1fa0c1d4745efa9c5490ebf9f5a7a7dec679c22f1c6015d5c85cb5b5b22964d86ae65002f1d4145bfdd7f27022d981b58979  clang-format-20_linux-amd64" | sha512sum -c
-        mkdir -p ~/.local/bin/
         mv clang-format-20_linux-amd64 ~/.local/bin/clang-format
         chmod +x ~/.local/bin/clang-format
+
+        # doxygen
+        wget -O doxygen.tar.gz https://www.doxygen.nl/files/doxygen-1.16.1.linux.bin.tar.gz
+        tar xf doxygen.tar.gz
+        mv doxygen-1.16.1/bin/doxygen ~/.local/bin
+        rm -f doxygen.tar.gz
+        rm -rf doxygen-1.16.1
     - name: Check fix_style
       run: scripts/fix_style.py --dry-run
     # - name: Shellcheck
     #   run: find . -type f -name '*.sh' -not -path './deps/*' -print0 | xargs -0 shellcheck
+
+    - name: Check documentation style (Doxygen)
+      run: |
+        doxygen --version
+        doxygen -q
+        if [ -s docs/warn.log ]; then
+          echo "--------------------------------------------------"
+          echo "Doxygen warnings:"
+          cat docs/warn.log
+          exit 1
+        fi
