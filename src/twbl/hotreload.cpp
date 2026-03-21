@@ -51,9 +51,6 @@ bool CHotreloader::NeedRefresh()
 
 void *CHotreloader::LoadTick(FTwbl_BotTick *ppfnBotTick)
 {
-	const char *pFilename = m_aFilename;
-	const char *pTickname = m_aTickname;
-
 	*ppfnBotTick = m_pfnBotTick;
 
 	if(!NeedRefresh())
@@ -64,6 +61,9 @@ void *CHotreloader::LoadTick(FTwbl_BotTick *ppfnBotTick)
 #ifdef CONF_FAMILY_WINDOWS
 	return nullptr;
 #else
+	const char *pFilename = m_aFilename;
+	const char *pTickname = m_aTickname;
+
 	char aTickfunc[1024];
 	snprintf(aTickfunc, sizeof(aTickfunc), "Twbl_%sTickHot", pTickname);
 
