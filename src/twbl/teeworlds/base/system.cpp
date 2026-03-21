@@ -140,18 +140,6 @@ void dbg_assert_imp(const char *filename, int line, bool test, const char *msg)
 	}
 }
 
-/**
- * @ingroup Debug
- *
- * Breaks into the debugger based on a test.
- *
- * @param test Result of the test.
- * @param msg Message that should be printed if the test fails.
- *
- * @remark Also works in release mode.
- *
- * @see dbg_break
- */
 #define dbg_assert(test, msg) dbg_assert_imp(__FILE__, __LINE__, test, msg)
 void dbg_assert_imp(const char *filename, int line, bool test, const char *msg);
 
@@ -209,18 +197,6 @@ int fs_file_time(const char *name, time_t *created, time_t *modified)
 	return 0;
 }
 
-/**
- * Checks if a file exists.
- *
- * @ingroup Filesystem
- *
- * @param path the path to check.
- *
- * @return 1 if a file with the given path exists,
- * 0 on failure or if the file does not exist.
- *
- * @remark The strings are treated as zero-terminated strings.
- */
 int fs_is_file(const char *path)
 {
 #if defined(CONF_FAMILY_WINDOWS)
