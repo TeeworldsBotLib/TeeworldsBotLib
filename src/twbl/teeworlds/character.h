@@ -28,12 +28,7 @@ public:
 	CCharacterCore m_Core;
 
 	int m_ClientId = -1;
-	int GetCid()
-	{
-		dbg_assert(m_ClientId != -1, "client id is not set");
-		return m_ClientId;
-	}
-
+	int GetCid();
 	vec2 GetPos() const { return m_Pos; }
 	bool IsGrounded() const { return m_IsGrounded; }
 

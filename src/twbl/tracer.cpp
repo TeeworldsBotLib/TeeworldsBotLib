@@ -1,3 +1,4 @@
+#include <twbl/teeworlds/base/dbg.h>
 #include <twbl/teeworlds/base/system.h>
 
 #include "tracer.h"

@@ -1,4 +1,5 @@
 #include <twbl/callback_ctx.h>
+#include <twbl/teeworlds/base/dbg.h>
 #include <twbl/teeworlds/base/system.h>
 
 #include "mock_callback_ctx.h"

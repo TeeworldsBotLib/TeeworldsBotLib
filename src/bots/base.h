@@ -5,6 +5,7 @@
 
 #include <twbl/hotreload.h>
 #include <twbl/teeworlds/base/color.h>
+#include <twbl/teeworlds/base/dbg.h>
 #include <twbl/teeworlds/base/system.h>
 #include <twbl/teeworlds/base/vmath.h>
 #include <twbl/teeworlds/character.h>
