@@ -30,21 +30,14 @@
 #define GNUC_ATTRIBUTE(x)
 #endif
 
+#define dbg_assert(test, msg) dbg_assert_imp(__FILE__, __LINE__, test, msg)
+
 void dbg_msg(const char *sys, const char *fmt, ...)
 	GNUC_ATTRIBUTE((format(printf, 2, 3)));
 
 void dbg_break();
 void dbg_assert_imp(const char *filename, int line, bool test, const char *msg);
 
-void dbg_assert(int test, const char *msg);
-#define dbg_assert(test, msg) dbg_assert_imp(__FILE__, __LINE__, test, msg)
-
-#define dbg_assert(test, msg) dbg_assert_imp(__FILE__, __LINE__, test, msg)
-void dbg_assert_imp(const char *filename, int line, bool test, const char *msg);
-
-#if defined(CONF_FAMILY_WINDOWS)
-std::wstring windows_utf8_to_wide(const char *str);
-#endif
 
 #endif // __has_include(<base/system.h>)
 #endif // TWBL_SRC_TWBL_TEEWORLDS_BASE_DBG_H
