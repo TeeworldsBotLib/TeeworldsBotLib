@@ -38,6 +38,5 @@ void dbg_msg(const char *sys, const char *fmt, ...)
 void dbg_break();
 void dbg_assert_imp(const char *filename, int line, bool test, const char *msg);
 
-
 #endif // __has_include(<base/system.h>)
 #endif // TWBL_SRC_TWBL_TEEWORLDS_BASE_DBG_H
