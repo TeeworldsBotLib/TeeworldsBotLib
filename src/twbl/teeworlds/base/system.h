@@ -4,15 +4,15 @@
 #include <cstdint>
 #if __has_include(<base/system.h>)
 #elif __has_include(<base/str.h>)
-#include <base/str.h>
-#include <base/log.h>
 #include <base/dbg.h>
-#include <base/io.h>
 #include <base/fs.h>
+#include <base/io.h>
+#include <base/log.h>
+#include <base/math.h>
 #include <base/mem.h>
 #include <base/net.h>
 #include <base/os.h>
-#include <base/math.h>
+#include <base/str.h>
 #include <base/vmath.h>
 #else
 
