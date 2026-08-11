@@ -31,6 +31,9 @@ CPlayer *CBaseBot::GetPlayer(int ClientId)
 
 CCharacter *CBaseBot::ClosestCharacter(vec2 Pos, const CCharacter *pNotThis)
 {
+	if(m_CachedClosestCharacter.m_Tick == m_pStateIn->m_GameTick)
+		return m_CachedClosestCharacter.m_pCharacter;
+
 	float ClosestRange = 0.f;
 	CCharacter *pClosest = nullptr;
 
@@ -54,6 +57,8 @@ CCharacter *CBaseBot::ClosestCharacter(vec2 Pos, const CCharacter *pNotThis)
 		}
 	}
 
+	m_CachedClosestCharacter.m_pCharacter = pClosest;
+	m_CachedClosestCharacter.m_Tick = m_pStateIn->m_GameTick;
 	return pClosest;
 }
 

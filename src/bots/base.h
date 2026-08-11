@@ -26,6 +26,14 @@ void PushRingInt(int *pBuffer, int New, size_t MaxEntries);
 
 class CBaseBot
 {
+	class CCachedChar
+	{
+	public:
+		int m_Tick = 0;
+		CCharacter *m_pCharacter = nullptr;
+	};
+	CCachedChar m_CachedClosestCharacter;
+
 public:
 	const CServerBotStateIn *m_pStateIn;
 	CServerBotStateOut *m_pStateOut;
