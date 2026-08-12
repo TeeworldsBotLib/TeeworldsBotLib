@@ -27,6 +27,9 @@ public:
 	int m_FreezeTime = 0;
 	CCharacterCore m_Core;
 
+	int m_TileIndex = 0;
+	int m_TileFIndex = 0;
+
 	int m_ClientId = -1;
 	int GetCid();
 	vec2 GetPos() const { return m_Pos; }
