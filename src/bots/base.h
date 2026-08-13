@@ -79,7 +79,8 @@ public:
 	bool IsGrounded() { return Character()->IsGrounded(); }
 	int FreezeTime() { return Character()->m_FreezeTime; }
 	bool IsFrozen(CCharacter *pChr = nullptr);
-	bool TicksPassed(int Ticks) { return m_pStateIn->m_GameTick % Ticks == 0; }
+	bool GameTicksPassed(int Ticks) { return m_pStateIn->m_GameTick % Ticks == 0; }
+	bool LibTicksPassed(int Ticks) { return m_pState->m_TwblTicks % Ticks == 0; }
 	int GameTick() { return m_pStateIn->m_GameTick; }
 	// returns the current walking direction set by Left(), Right(), SetDirection()
 	int GetDirection() { return m_pStateOut->m_Direction; }

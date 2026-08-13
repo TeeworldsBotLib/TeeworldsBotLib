@@ -10,7 +10,7 @@ void CSampleEngine::WalkRight()
 {
 	Right("sample engine walk");
 
-	if(TicksPassed(10))
+	if(GameTicksPassed(10))
 		Left("trolled by engine");
 }
 

@@ -39,7 +39,27 @@ protected:
 	bool IsGrounded();
 	int FreezeTime();
 	bool IsFrozen(CCharacter *pChr = nullptr);
-	bool TicksPassed(int Ticks);
+
+	/// Returns true every time the server game tick reaches
+	/// a multiple of the *Ticks* argument.
+	///
+	/// This can be used to schedule some actions that should happen
+	/// in intervals.
+	///
+	/// But be careful! The bot library will be called multiple times
+	/// per game tick most likely. So this will be true for multiple ticks in a row.
+	/// this can be useful to properly send inputs because between game tick inputs don't work well
+	/// anyways. But if you need some specific action to actually only happen once then
+	/// checkout the LibTicksPassed() method
+	bool GameTicksPassed(int Ticks);
+
+	/// Returns true every time the library ticked a multiple of *Ticks* times
+	/// this can be used to schedule a action in intervals.
+	/// But be careful if you pick intervals lower than the server tick speed the event might be lost or overriden.
+	/// If you need to be independent from the bot tick speed and do something tied to gameplay and inputs
+	/// it is recommended to use GameTicksPassed() instead
+	bool LibTicksPassed(int Ticks);
+
 	int GameTick();
 
 public:

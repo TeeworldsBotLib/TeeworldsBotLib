@@ -73,9 +73,14 @@ bool CBaseEngine::IsFrozen(CCharacter *pChr)
 	return Bot()->IsFrozen(pChr);
 }
 
-bool CBaseEngine::TicksPassed(int Ticks)
+bool CBaseEngine::GameTicksPassed(int Ticks)
 {
-	return Bot()->TicksPassed(Ticks);
+	return Bot()->GameTicksPassed(Ticks);
+}
+
+bool CBaseEngine::LibTicksPassed(int Ticks)
+{
+	return Bot()->LibTicksPassed(Ticks);
 }
 
 int CBaseEngine::GameTick()
