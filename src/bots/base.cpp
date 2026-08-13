@@ -114,7 +114,7 @@ void CBaseBot::SendChat(const char *pFormat, ...)
 	va_start(Args, pFormat);
 	char aMessage[4096];
 	str_format_v(aMessage, sizeof(aMessage), pFormat, Args);
-	SendChat(0, aMessage);
+	SendChatTeam(0, aMessage);
 	va_end(Args);
 }
 
