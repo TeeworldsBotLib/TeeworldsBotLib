@@ -2,7 +2,7 @@
 
 #ifdef TWBL_DEBUG
 #define Die(comment) _Die(comment)
-#define Emote(value, comment) _Emote(value, comment)
+#define Emote(value, comment) _Emote(value, comment, __func__, __FILE__, __LINE__)
 #define Aim(TargetX, TargetY, comment) _Aim(TargetX, TargetY, comment, __func__, __FILE__, __LINE__)
 #define AimPos(TargetX, TargetY, comment) _AimPos(TargetX, TargetY, comment, __func__, __FILE__, __LINE__)
 #define SetDirection(value, comment) _SetDirection(value, comment, __func__, __FILE__, __LINE__)
