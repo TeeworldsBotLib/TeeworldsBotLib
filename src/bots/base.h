@@ -97,7 +97,8 @@ public:
 	// because tracking chat is rarely needed
 	// it traces it self
 	void _SendChatRaw(int Team, const char *pText);
-	void SendChat(int Team, const char *pText) { _SendChatRaw(Team, pText); }
+	void SendChatTeam(int Team, const char *pText) { _SendChatRaw(Team, pText); }
+	[[gnu::format(printf, 2, 3)]] void SendChat(const char *pFormat, ...);
 
 	// it is recommended to use the macros instead
 

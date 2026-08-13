@@ -54,6 +54,8 @@ void str_timestamp_ex(time_t time, char *buffer, int buffer_size, const char *fo
 void str_format(char *buffer, int buffer_size, const char *format, ...)
 	GNUC_ATTRIBUTE((format(printf, 3, 4)));
 
+[[gnu::format(printf, 3, 0)]] int str_format_v(char *buffer, int buffer_size, const char *format, va_list args);
+
 void str_append(char *dst, const char *src, int dst_size);
 
 template<int N>

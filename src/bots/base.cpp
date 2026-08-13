@@ -1,3 +1,4 @@
+#include <cstdarg>
 #include <cstdio>
 
 #include <bots/base.h>
@@ -105,6 +106,16 @@ void CBaseBot::_Die(const char *pComment) const
 void CBaseBot::_SendChatRaw(int Team, const char *pText)
 {
 	m_pStateIn->m_pCallbackCtx->SendChat(Team, pText);
+}
+
+void CBaseBot::SendChat(const char *pFormat, ...)
+{
+	va_list Args;
+	va_start(Args, pFormat);
+	char aMessage[4096];
+	str_format_v(aMessage, sizeof(aMessage), pFormat, Args);
+	SendChat(0, aMessage);
+	va_end(Args);
 }
 
 void CBaseBot::_EmoteRaw(int Emoticon)

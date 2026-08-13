@@ -17,7 +17,7 @@ namespace TWBL {
 
 void CSampleBot::Tick()
 {
-	SendChat(0, "hello world");
+	SendChatTeam(0, "hello world");
 	SetWeapon(WEAPON_HAMMER, "hammer time");
 
 	Right("yolo");

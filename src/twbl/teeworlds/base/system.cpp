@@ -62,6 +62,20 @@ void str_format(char *buffer, int buffer_size, const char *format, ...)
 	buffer[buffer_size - 1] = 0; /* assure null termination */
 }
 
+int str_format_v(char *buffer, int buffer_size, const char *format, va_list args)
+{
+#if defined(CONF_FAMILY_WINDOWS)
+	_vsprintf_p(buffer, buffer_size, format, args);
+	buffer[buffer_size - 1] = 0; /* assure null termination */
+#else
+	vsnprintf(buffer, buffer_size, format, args);
+	/* null termination is assured by definition of vsnprintf */
+#endif
+	// TODO: utf8 stuff and length
+	// return str_utf8_fix_truncation(buffer);
+	return 0;
+}
+
 void str_append(char *dst, const char *src, int dst_size)
 {
 	int s;
