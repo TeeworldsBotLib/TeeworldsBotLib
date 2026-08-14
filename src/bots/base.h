@@ -72,7 +72,20 @@ public:
 	CPlayer *GetPlayer(int ClientId = -1);
 	CCharacter *ClosestCharacter(vec2 Pos, const CCharacter *pNotThis);
 
+	// Takes a vector of floats but the floating point is not super interesting here.
+	// You can totally also pass vector of integers here.
+	// The precision comes from the multiplier 32.
+	// So the first tile on the top left of the map is located from x 0 to x 32 and y 0 to y 32
+	// and the tile on its right side is at x 32 to x 64 with y still being 0 to 32
+	//
+	// It is recommended to use this wrapper instead of Collision()->GetTile() because the other one
+	// finds less tiles.
+	//
+	// You can pass GetPos() as argument and it will find the tile the current tee is inside of.
 	int GetTile(vec2 Pos);
+
+	// Checkout the recommended vec2 overload for more documentation.
+	int GetTile(int x, int y) { return GetTile(vec2(x, y)); }
 
 	vec2 GetPos() { return Character()->GetPos(); }
 	vec2 GetVel() { return Character()->Core()->m_Vel; }

@@ -28,7 +28,7 @@ void CFollowBot::Tick()
 	if(pChr->GetPos().x > GetPos().x + (2 * 32))
 		WalkDir = 1;
 
-	int Tile = Collision()->GetTile((int)(GetPos().x + (32 * WalkDir)), (int)(GetPos().y));
+	int Tile = GetTile(GetPos().x + (32 * WalkDir), GetPos().y);
 	if(Tile == 1)
 		Jump(1, "jump over obstacle");
 	SetDirection(WalkDir, "walk towards closest player");

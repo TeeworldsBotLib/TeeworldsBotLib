@@ -35,7 +35,7 @@ void CSampleBot::Tick()
 	else
 		Left("go left till 10");
 
-	int Tile = Collision()->GetTile((int)(GetPos().x), (int)(GetPos().y) + 32);
+	int Tile = GetTile(GetPos().x, GetPos().y + 32);
 	printf("bot at %d/%d currently walking on tile %d\n", (int)(GetPos().x / 32), (int)(GetPos().y / 32), Tile);
 
 	for(int i = 0; i < MAX_CLIENTS; i++)

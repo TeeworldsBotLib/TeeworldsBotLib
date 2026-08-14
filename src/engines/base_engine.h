@@ -44,6 +44,9 @@ protected:
 	// You can pass GetPos() as argument and it will find the tile the current tee is inside of.
 	int GetTile(vec2 Pos);
 
+	// Checkout the recommended vec2 overload for more documentation.
+	int GetTile(int x, int y) { return GetTile(vec2(x, y)); }
+
 	vec2 GetPos();
 	vec2 GetVel();
 	bool IsGrounded();
