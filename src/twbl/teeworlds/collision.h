@@ -9,6 +9,9 @@
 class CCollision
 {
 public:
+	// WARNING: this goes through a TileExists() filter and many tiles like TILE_FREEZE
+	//          will not show up here
+	//          use GetTileIndex() instead!
 	int GetTile(int x, int y) const { return -404; }
 	int IntersectLine(vec2 Pos0, vec2 Pos1, vec2 *pOutCollision, vec2 *pOutBeforeCollision) const { return -404; }
 
